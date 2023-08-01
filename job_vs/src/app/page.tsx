@@ -1,4 +1,6 @@
+"use client";
 import Image from "next/image";
+import { Button } from "../components/button";
 
 export default function Home() {
   return (
@@ -9,6 +11,13 @@ export default function Home() {
       <h1 className="font-Pretendard-900 tracking-wide text-space-magenta text-8xl">
         안녕하세요
       </h1>
+      <Button
+        onClick={() => {
+          console.log("Button clicked!");
+        }}
+      >
+        시작하기
+      </Button>
     </main>
   );
 }
