@@ -18,7 +18,7 @@ const Subjective: React.FC<SubjectiveProps> = ({
       placeholder={placeholder}
       onChange={handleChange}
       className={`placeholder-gray-400 placeholder:font-HakgyoansimWoojuR
-        placeholder:text-2xl placeholder:text-center
+        placeholder:text-xl placeholder:text-center
         font-Pretendard-500
         ${inputValue ? "w-3/5 h-20" : "w-64 h-10"}
         my-4 px-4 py-2 

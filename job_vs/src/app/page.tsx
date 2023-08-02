@@ -2,8 +2,17 @@
 import Image from "next/image";
 import { Button } from "@/components/button";
 import { Subjective } from "@/components/subjective";
+import { SkillSearchDropdown } from "@/components/skillSearchDropdown";
 
 export default function Home() {
+  const aquaticCreatures: { label: string; value: string }[] = [
+    { label: "Shark", value: "Shark" },
+    { label: "Dolphin", value: "Dolphin" },
+    { label: "Whale", value: "Whale" },
+    { label: "Octopus", value: "Octopus" },
+    { label: "Crab", value: "Crab" },
+    { label: "Lobster", value: "Lobster" },
+  ];
   return (
     <main className="flex min-h-screen flex-col items-center">
       <h1 className="font-HakgyoansimWoojuR text-space-dark-blue tracking-wide text-8xl">
@@ -19,7 +28,11 @@ export default function Home() {
       >
         시작하기
       </Button>
-      <Subjective placeholder="hello" onChange={() => {}} />
+      <Subjective placeholder="천천히 입력해보시게" onChange={() => {}} />
+      <SkillSearchDropdown
+        options={aquaticCreatures}
+        placeholder="기술스택 검색해보시게"
+      />
     </main>
   );
 }

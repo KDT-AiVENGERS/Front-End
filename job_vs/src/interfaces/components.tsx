@@ -13,3 +13,10 @@ export interface SubjectiveProps
   onChange: (e: ChangeEvent<HTMLInputElement>) => void;
   className?: string;
 }
+
+export interface SkillSearchDropdownProps
+  extends React.SelectHTMLAttributes<HTMLSelectElement> {
+  placeholder?: string;
+  options: { label: string; value: string }[];
+  className?: string;
+}
