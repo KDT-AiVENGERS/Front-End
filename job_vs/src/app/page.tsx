@@ -1,6 +1,7 @@
 "use client";
 import Image from "next/image";
-import { Button } from "../components/button";
+import { Button } from "@/components/button";
+import { Subjective } from "@/components/subjective";
 
 export default function Home() {
   return (
@@ -18,6 +19,7 @@ export default function Home() {
       >
         시작하기
       </Button>
+      <Subjective placeholder="hello" onChange={() => {}} />
     </main>
   );
 }

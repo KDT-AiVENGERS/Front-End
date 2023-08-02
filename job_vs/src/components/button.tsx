@@ -1,10 +1,6 @@
-import classNames from "classnames";
+import { ButtonProps } from "@/interfaces/components";
 
-const Button: React.FC<React.ButtonHTMLAttributes<HTMLButtonElement>> = ({
-  children,
-  className,
-  onClick,
-}) => {
+const Button: React.FC<ButtonProps> = ({ children, className, onClick }) => {
   return (
     <div className="flex flex-row items-center space-x-4 my-4">
       <button
