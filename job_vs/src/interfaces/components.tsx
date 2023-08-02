@@ -20,3 +20,7 @@ export interface SkillSearchDropdownProps
   options: { label: string; value: string }[];
   className?: string;
 }
+
+export interface BubbleProps {
+  children: string;
+}
