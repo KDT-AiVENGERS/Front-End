@@ -12,6 +12,7 @@ const customStyles: StylesConfig = {
     ...styles,
     backgroundColor: "white",
     color: "black",
+    borderRadius: "12px",
   }),
 };
 
@@ -19,6 +20,8 @@ const SkillSearchDropdown: React.FC<SkillSearchDropdownProps> = ({
   placeholder,
   className,
   options,
+  onChange,
+  value,
 }) => {
   return (
     <div className="app">
@@ -27,6 +30,8 @@ const SkillSearchDropdown: React.FC<SkillSearchDropdownProps> = ({
         placeholder={placeholder}
         className={`w-64 px-4 py-2 font-HakgyoansimWoojuR ${className}`}
         styles={customStyles}
+        onChange={onChange}
+        value={value}
       />
     </div>
   );

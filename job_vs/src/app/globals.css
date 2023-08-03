@@ -80,6 +80,8 @@
     format("woff2");
   font-weight: normal;
   font-style: normal;
+  /* prettier-ignore */
+  unicode-range: U+AC00-D7A3;
 }
 
 :root {

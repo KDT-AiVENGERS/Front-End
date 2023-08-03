@@ -36,7 +36,7 @@ module.exports = {
         "Pretendard-700": ["Pretendard-Bold"],
         "Pretendard-800": ["Pretendard-ExtraBold"],
         "Pretendard-900": ["Pretendard-Black"],
-        HakgyoansimWoojuR: ["HakgyoansimWoojuR"],
+        HakgyoansimWoojuR: ["HakgyoansimWoojuR", "Pretendard-ExtraLight"],
       },
     },
   },
