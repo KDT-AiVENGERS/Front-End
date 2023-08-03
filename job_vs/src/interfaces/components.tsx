@@ -32,3 +32,12 @@ export interface SkillStack {
   label: string;
   value: string;
 }
+
+export enum ObjectiveTypes {
+  singleChoice,
+  multipleChoice,
+}
+export interface ObjectiveProps {
+  type: ObjectiveTypes;
+  options: string[];
+}
