@@ -52,3 +52,9 @@ export interface JDRecommendSummaryProps {
   recommendMetrics: RecommendMetricsDatum[];
   bestKeyword: string;
 }
+
+export interface JDRecommendCellProps {
+  jdName: string;
+  job: string;
+  yearOfExperienc: number;
+}

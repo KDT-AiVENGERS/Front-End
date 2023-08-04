@@ -77,7 +77,7 @@ const JDRecommendSummary: React.FC<JDRecommendSummaryProps> = ({
       <div className="w-3/5 h-full">
         <RecommendBar data={nivoPacket} />
       </div>
-      <div className="flex flex-col items-center text-4xl ms-4 font-SpoqaHanSansNeo font-bold tracking-tight leading-10">
+      <div className="flex flex-col items-center text-4xl ms-4 font-HakgyoansimWoojuR font-bold tracking-tight leading-10">
         <p>가장 많이 나온 직무 내용은</p>
         <div>
           <span className="text-space-blue">{bestKeyword}</span>
