@@ -68,7 +68,6 @@ const dummyCurri: CurriCellProps = {
   smallCategory: "Web Development",
   title: "【한글자막】 The Web Developer 부트캠프 2023",
   difficulty: "모든 수준",
-  price: 17000,
   requiredTime: "73시간 30분",
   introduction: `웹 개발 최신 문법 (HTML5, CSS3, 모던 자바스크립트)
   Bootstrap 5, Semantic UI, Bulma 등 실무 CSS 프레임워크 사용법

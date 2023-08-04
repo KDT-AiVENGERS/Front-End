@@ -69,8 +69,7 @@ export interface CurriCellProps {
   smallCategory: string;
   title: string;
   difficulty: string;
-  price: number;
-  requiredTime: number;
+  requiredTime: string;
   introduction: string;
   language: string;
   url: string;
