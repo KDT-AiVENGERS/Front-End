@@ -63,7 +63,7 @@ const Skill: React.FC = () => {
       <div className="flex flex-row items-center justify-center">
         <SkillSearchDropdown
           options={skillStack}
-          placeholder="기술스택을 알려주세요"
+          placeholder="기술스택을 검색하세요"
           onChange={handleSearchComponent}
           value={searchedSkillStack}
         />

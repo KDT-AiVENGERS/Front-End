@@ -56,5 +56,22 @@ export interface JDRecommendSummaryProps {
 export interface JDRecommendCellProps {
   jdName: string;
   job: string;
-  yearOfExperienc: number;
+  yearOfExperience: number;
+  introduction: string;
+  qualificationRequirements: string;
+  welfare: string;
+  preferentialTreatment: string;
+  url: string;
+}
+
+export interface CurriCellProps {
+  largeCategory: string;
+  smallCategory: string;
+  title: string;
+  difficulty: string;
+  price: number;
+  requiredTime: number;
+  introduction: string;
+  language: string;
+  url: string;
 }

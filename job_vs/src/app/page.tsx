@@ -14,7 +14,8 @@ import {
   JDRecommendCellProps,
 } from "@/interfaces/components";
 import { JDRecommendCell } from "@/components/jdRecommendCell";
-import { dummyJD } from "./dummyData";
+import { dummyJD, dummyCurri } from "./dummyData";
+import { CurriCell } from "@/components/curriCell";
 
 export default function Home() {
   const options: string[] = ["안녕", "피곤해", "졸려"];
@@ -59,6 +60,18 @@ export default function Home() {
         welfare={dummyJD.welfare}
         url={dummyJD.url}
       />
+      <CurriCell
+        largeCategory={dummyCurri.largeCategory}
+        smallCategory={dummyCurri.smallCategory}
+        title={dummyCurri.title}
+        difficulty={dummyCurri.difficulty}
+        price={dummyCurri.price}
+        requiredTime={dummyCurri.requiredTime}
+        introduction={dummyCurri.introduction}
+        language={dummyCurri.language}
+        url={dummyCurri.url}
+      />
+
       <div className="h-32"></div>
     </main>
   );

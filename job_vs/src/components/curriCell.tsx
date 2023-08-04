@@ -1,48 +1,19 @@
-import { JDRecommendCellProps } from "@/interfaces/components";
+import { CurriCellProps } from "@/interfaces/components";
 import { Button } from "@/components/button";
 import React, { useState } from "react";
 import Linkify from "react-linkify";
 
-const JDRecommendCell: React.FC<JDRecommendCellProps> = ({
-  jdName,
-  job,
-  yearOfExperience,
+const CurriCell: React.FC<CurriCellProps> = ({
+  largeCategory,
+  smallCategory,
+  title,
+  difficulty,
+  price,
+  requiredTime,
   introduction,
-  qualificationRequirements,
-  welfare,
-  preferentialTreatment,
+  language,
   url,
 }) => {
-  var YearOfExperienceOutput: React.FC;
-  if (yearOfExperience === 0) {
-    YearOfExperienceOutput = () => {
-      return (
-        <div
-          className="text-xl font-HakgyoansimWoojuR font-bold tracking-tight leading-10
-    text-space-blue ps-1 py-1 rounded-full"
-        >
-          경력 무관{" "}
-        </div>
-      );
-    };
-  } else {
-    YearOfExperienceOutput = () => {
-      return (
-        <div
-          className='text-xl 
-      font-HakgyoansimWoojuR font-bold tracking-tight leading-10
-      text-space-blue ps-1 py-1 rounded-full"'
-        >
-          경력{" "}
-          <span className=" text-space-red font-SpoqaHanSansNeo font-bold tracking-tight leading-10">
-            {yearOfExperience}
-          </span>{" "}
-          년 이상
-        </div>
-      );
-    };
-  }
-
   const componentDecorator = (href: string, text: string, key: number) => (
     <a
       href={href}
@@ -55,11 +26,10 @@ const JDRecommendCell: React.FC<JDRecommendCellProps> = ({
     </a>
   );
 
-  const jdColumns: object = {
-    "회사 소개": introduction,
-    자격요건: qualificationRequirements,
-    우대사항: preferentialTreatment,
-    복지: welfare,
+  const curriColumns: object = {
+    "총 소요시간": requiredTime,
+    "강의 소개": introduction,
+    언어: language,
   };
 
   const [isFilped, setIsFliped] = useState(true);
@@ -78,15 +48,15 @@ const JDRecommendCell: React.FC<JDRecommendCellProps> = ({
       <div className="flex w-3/5 justify-between bg-white rounded-2xl">
         <div className="flex flex-col">
           <div className="text-3xl ms-4 mt-4 font-HakgyoansimWoojuR font-bold tracking-tight leading-10">
-            {jdName}
+            {title}
           </div>
           <div className="flex">
             <div
-              className="text-xl ms-4
+              className="text-xl ms-4 me-2
               font-HakgyoansimWoojuR font-bold tracking-tight leading-10
-              text-space-blue pe-1 py-1 rounded-full"
+              text-space-blue py-1 rounded-full"
             >
-              {job}
+              {largeCategory}
             </div>
             <span
               className="font-HakgyoansimWoojuR text-xl py-1
@@ -94,7 +64,39 @@ const JDRecommendCell: React.FC<JDRecommendCellProps> = ({
             >
               |
             </span>
-            <YearOfExperienceOutput />
+            <div
+              className="text-xl ms-2 me-2
+              font-HakgyoansimWoojuR font-bold tracking-tight leading-10
+              text-space-blue py-1 rounded-full"
+            >
+              {smallCategory}
+            </div>
+            <span
+              className="font-HakgyoansimWoojuR text-xl py-1
+              font-bold tracking-tight leading-10 text-gray-400 items-center"
+            >
+              |
+            </span>
+            <div
+              className="text-xl ms-2 me-2
+              font-HakgyoansimWoojuR font-bold tracking-tight leading-10
+              text-space-blue py-1 rounded-full"
+            >
+              {difficulty}
+            </div>
+            <span
+              className="font-HakgyoansimWoojuR text-xl py-1
+              font-bold tracking-tight leading-10 text-gray-400 items-center"
+            >
+              |
+            </span>
+            <div
+              className="text-xl ms-2 me-2
+              font-HakgyoansimWoojuR font-bold tracking-tight leading-10
+              text-space-blue py-1 rounded-full"
+            >
+              {price.toLocaleString()} 원
+            </div>
           </div>
         </div>
         <div className="flex items-center">
@@ -110,23 +112,55 @@ const JDRecommendCell: React.FC<JDRecommendCellProps> = ({
         <div className="flex w-full justify-between">
           <div className="flex flex-col">
             <div className="text-3xl ms-4 mt-4 font-HakgyoansimWoojuR font-bold tracking-tight leading-10">
-              {jdName}
+              {title}
             </div>
             <div className="flex">
               <div
-                className="text-xl ms-4
-          font-HakgyoansimWoojuR font-bold tracking-tight leading-10
-          text-space-blue pe-1 py-1 rounded-full"
+                className="text-xl ms-4 me-2
+              font-HakgyoansimWoojuR font-bold tracking-tight leading-10
+              text-space-blue py-1 rounded-full"
               >
-                {job}
+                {largeCategory}
               </div>
               <span
                 className="font-HakgyoansimWoojuR text-xl py-1
-          font-bold tracking-tight leading-10 text-gray-400 items-center"
+              font-bold tracking-tight leading-10 text-gray-400 items-center"
               >
                 |
               </span>
-              <YearOfExperienceOutput />
+              <div
+                className="text-xl ms-2 me-2
+              font-HakgyoansimWoojuR font-bold tracking-tight leading-10
+              text-space-blue py-1 rounded-full"
+              >
+                {smallCategory}
+              </div>
+              <span
+                className="font-HakgyoansimWoojuR text-xl py-1
+              font-bold tracking-tight leading-10 text-gray-400 items-center"
+              >
+                |
+              </span>
+              <div
+                className="text-xl ms-2 me-2
+              font-HakgyoansimWoojuR font-bold tracking-tight leading-10
+              text-space-blue py-1 rounded-full"
+              >
+                {difficulty}
+              </div>
+              <span
+                className="font-HakgyoansimWoojuR text-xl py-1
+              font-bold tracking-tight leading-10 text-gray-400 items-center"
+              >
+                |
+              </span>
+              <div
+                className="text-xl ms-2 me-2
+              font-HakgyoansimWoojuR font-bold tracking-tight leading-10
+              text-space-blue py-1 rounded-full"
+              >
+                {price.toLocaleString()} 원
+              </div>
             </div>
           </div>
           <div className="flex items-center">
@@ -135,9 +169,10 @@ const JDRecommendCell: React.FC<JDRecommendCellProps> = ({
             </Button>
           </div>
         </div>
+
         <div className="ms-4 me-4">
           <div>
-            {Object.entries(jdColumns).map(([key, value], index) => (
+            {Object.entries(curriColumns).map(([key, value], index) => (
               <div key={index}>
                 <div
                   className="font-HakgyoansimWoojuR font-bold tracking-tight 
@@ -148,7 +183,7 @@ const JDRecommendCell: React.FC<JDRecommendCellProps> = ({
                 </div>
                 <div className="font-SpoqaHanSansNeo text-lg font-regular tracking-tight leading-10 ms-5 mb-10 me-3 whitespace-pre-line">
                   <Linkify componentDecorator={componentDecorator}>
-                    {value}
+                    {value.trim()}
                   </Linkify>
                 </div>
               </div>
@@ -164,14 +199,7 @@ const JDRecommendCell: React.FC<JDRecommendCellProps> = ({
                 gotoURL(url);
               }}
             >
-              공고사이트 가기
-            </Button>
-            <Button
-              className="w-80 text-space-dark-yellow
-             bg-space-dark-blue"
-              onClick={() => {}}
-            >
-              연관 커리큘럼 추천받기
+              강의사이트 가기
             </Button>
           </div>
         </div>
@@ -180,4 +208,4 @@ const JDRecommendCell: React.FC<JDRecommendCellProps> = ({
   }
 };
 
-export { JDRecommendCell };
+export { CurriCell };
