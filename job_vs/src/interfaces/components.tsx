@@ -1,5 +1,6 @@
 import { ChangeEvent } from "react";
 import { ActionMeta } from "react-select";
+import { BarDatum } from "@nivo/bar";
 
 export interface ButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement> {
@@ -40,4 +41,14 @@ export enum ObjectiveTypes {
 export interface ObjectiveProps {
   type: ObjectiveTypes;
   options: string[];
+}
+
+export interface RecommendMetricsDatum {
+  key: string;
+  value: number;
+}
+
+export interface JDRecommendSummaryProps {
+  recommendMetrics: RecommendMetricsDatum[];
+  bestKeyword: string;
 }

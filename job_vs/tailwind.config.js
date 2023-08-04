@@ -37,6 +37,7 @@ module.exports = {
         "Pretendard-800": ["Pretendard-ExtraBold"],
         "Pretendard-900": ["Pretendard-Black"],
         HakgyoansimWoojuR: ["HakgyoansimWoojuR", "Pretendard-ExtraLight"],
+        SpoqaHanSansNeo: ["Spoqa Han Sans Neo"],
       },
     },
   },

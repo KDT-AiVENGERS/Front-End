@@ -2,6 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
+@import url(//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSansNeo.css);
+
 @font-face {
   font-family: "Pretendard-Thin";
   src: url("https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Thin.woff")
@@ -80,8 +82,6 @@
     format("woff2");
   font-weight: normal;
   font-style: normal;
-  /* prettier-ignore */
-  unicode-range: U+AC00-D7A3;
 }
 
 :root {
