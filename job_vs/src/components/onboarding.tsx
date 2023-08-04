@@ -8,17 +8,17 @@ const Onboarding: React.FC<OnboardingProps> = ({
 }) => {
   return (
     <div className="flex">
-      <img src={imagePath} alt={imageAlt} className="w-96 h-96"></img>
-      <div className="flex flex-col px-4 justify-center">
+      <img src={imagePath} alt={imageAlt} className="w-1/4 h-1/4"></img>
+      <div className="flex flex-col ms-14 px-10 justify-center">
         <p
           className="font-SpoqaHanSansNeo font-black tracking-tight
-               text-8xl text-white my-5"
+               text-4xl text-white my-5"
         >
           {title}
         </p>
         <div
           className="whitespace-pre-line font-HakgyoansimWoojuR tracking-tight  
-               px-2 text-4xl text-white"
+               text-2xl text-white"
         >
           {description}
         </div>
