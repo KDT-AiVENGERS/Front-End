@@ -10,7 +10,7 @@ const Bubble: React.FC<BubbleProps> = ({ children, onCancelClick }) => {
         <span className="me-4">{children}</span>
         <button onClick={onCancelClick}>
           <img
-            src="/images/close.png"
+            src="/images/qna/close.png"
             alt="취소 버튼"
             className="w-4 h-4"
           ></img>

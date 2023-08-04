@@ -7,6 +7,8 @@ export interface ButtonProps
   children: string;
   className?: string;
   onClick: () => void;
+  newButtonColorClassName?: string;
+  newHoverColorClassName?: string;
 }
 
 export interface SubjectiveProps
@@ -73,4 +75,11 @@ export interface CurriCellProps {
   introduction: string;
   language: string;
   url: string;
+}
+
+export interface OnboardingProps {
+  imagePath: string;
+  imageAlt: string;
+  title: string;
+  description: string;
 }

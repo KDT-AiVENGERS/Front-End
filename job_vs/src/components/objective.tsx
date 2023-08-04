@@ -21,8 +21,10 @@ const Objective: React.FC<ObjectiveProps> = ({ type, options }) => {
           } else {
             return (
               <Button
-                onClick={() => {}}
-                className="bg-space-light-blue hover:bg-space-light-blue text-white mx-4"
+                onClick={() => selectButton(idx)}
+                className="text-white mx-4"
+                newButtonColorClassName="bg-space-light-blue"
+                newHoverColorClassName="bg-space-light-blue"
               >
                 {item}
               </Button>
@@ -54,7 +56,9 @@ const Objective: React.FC<ObjectiveProps> = ({ type, options }) => {
             return (
               <Button
                 onClick={() => selectButton(idx)}
-                className="bg-space-light-blue hover:bg-space-light-blue text-white mx-4"
+                className="text-white mx-4"
+                newButtonColorClassName="bg-space-light-blue"
+                newHoverColorClassName="bg-space-light-blue"
               >
                 {item}
               </Button>

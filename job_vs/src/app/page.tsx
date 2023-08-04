@@ -16,6 +16,7 @@ import {
 import { JDRecommendCell } from "@/components/jdRecommendCell";
 import { dummyJD, dummyCurri } from "./dummyData";
 import { CurriCell } from "@/components/curriCell";
+import { Onboarding } from "@/components/onboarding";
 
 export default function Home() {
   const options: string[] = ["안녕", "피곤해", "졸려"];
@@ -26,6 +27,10 @@ export default function Home() {
     { key: "거나", value: 4 },
     { key: "쓰자", value: 1 },
   ];
+
+  const description: string = `안녕하세요 저희 서비스에
+  오신 것을 환영합니다
+  당신의 진로를 찾아드려요`;
 
   return (
     <main className="flex min-h-screen flex-col gap-4 items-center">
@@ -65,11 +70,16 @@ export default function Home() {
         smallCategory={dummyCurri.smallCategory}
         title={dummyCurri.title}
         difficulty={dummyCurri.difficulty}
-        price={dummyCurri.price}
         requiredTime={dummyCurri.requiredTime}
         introduction={dummyCurri.introduction}
         language={dummyCurri.language}
         url={dummyCurri.url}
+      />
+      <Onboarding
+        imagePath="/images/onboarding/polar-bear.png"
+        imageAlt="북극곰"
+        title="안녕하세요"
+        description={description}
       />
 
       <div className="h-32"></div>

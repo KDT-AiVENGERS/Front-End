@@ -167,8 +167,8 @@ const JDRecommendCell: React.FC<JDRecommendCellProps> = ({
               공고사이트 가기
             </Button>
             <Button
-              className="w-80 text-space-dark-yellow
-             bg-space-dark-blue"
+              className="w-80 text-space-dark-yellow"
+              newButtonColorClassName="bg-space-dark-blue"
               onClick={() => {}}
             >
               연관 커리큘럼 추천받기
