@@ -48,7 +48,7 @@ body {
 }
 
 #emphasis {
-  animation: glow_yellow-weak 2s ease-in-out infinite;
+  animation: glow_yellow_weak 2s ease-in-out infinite;
 }
 
 @keyframes glow_yellow {
@@ -68,7 +68,7 @@ body {
   }
 }
 
-@keyframes glow_yellow-weak {
+@keyframes glow_yellow_weak {
   0% {
     text-shadow: 0 0 2px #f7d64d, 0 0 5px #f7d64d, 0 0 10px #f7d64d,
       0 0 20px #f7d64d, 0 0 40px #f7d64d;
@@ -99,5 +99,22 @@ body {
   100% {
     text-shadow: 0 0 2px #bdc3c7, 0 0 5px #bdc3c7, 0 0 10px #bdc3c7,
       0 0 20px #bdc3c7, 0 0 40px #bdc3c7;
+  }
+}
+
+@keyframes glow_silver_weak_comp {
+  0% {
+    box-shadow: 0 0 1px #384f56, 0 0 2px #384f56, 0 0 3px #384f56,
+      0 0 4px #384f56, 0 0 5px #384f56;
+  }
+
+  50% {
+    box-shadow: 0 0 1px #384f56, 0 0 1px #384f56, 0 0 2px #384f56,
+      0 0 2px #384f56, 0 0 3px #384f56;
+  }
+
+  100% {
+    box-shadow: 0 0 1px #384f56, 0 0 2px #384f56, 0 0 3px #384f56,
+      0 0 4px #384f56, 0 0 5px #384f56;
   }
 }
