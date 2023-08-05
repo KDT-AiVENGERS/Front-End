@@ -28,7 +28,6 @@ const CurriCell: React.FC<CurriCellProps> = ({
   const curriColumns: object = {
     "총 소요시간": requiredTime,
     "강의 소개": introduction,
-    언어: language,
   };
 
   const [isFilped, setIsFliped] = useState(true);
@@ -55,19 +54,6 @@ const CurriCell: React.FC<CurriCellProps> = ({
               font-HakgyoansimWoojuR font-bold tracking-tight leading-10
               text-space-blue py-1 rounded-full"
             >
-              {largeCategory}
-            </div>
-            <span
-              className="font-HakgyoansimWoojuR text-xl py-1
-              font-bold tracking-tight leading-10 text-gray-400 items-center"
-            >
-              |
-            </span>
-            <div
-              className="text-xl ms-2 me-2
-              font-HakgyoansimWoojuR font-bold tracking-tight leading-10
-              text-space-blue py-1 rounded-full"
-            >
               {smallCategory}
             </div>
             <span
@@ -82,6 +68,19 @@ const CurriCell: React.FC<CurriCellProps> = ({
               text-space-blue py-1 rounded-full"
             >
               {difficulty}
+            </div>
+            <span
+              className="font-HakgyoansimWoojuR text-xl py-1
+              font-bold tracking-tight leading-10 text-gray-400 items-center"
+            >
+              |
+            </span>
+            <div
+              className="text-xl ms-2 me-2
+              font-HakgyoansimWoojuR font-bold tracking-tight leading-10
+              text-space-blue py-1 rounded-full"
+            >
+              {language}
             </div>
           </div>
         </div>
@@ -106,19 +105,6 @@ const CurriCell: React.FC<CurriCellProps> = ({
               font-HakgyoansimWoojuR font-bold tracking-tight leading-10
               text-space-blue py-1 rounded-full"
               >
-                {largeCategory}
-              </div>
-              <span
-                className="font-HakgyoansimWoojuR text-xl py-1
-              font-bold tracking-tight leading-10 text-gray-400 items-center"
-              >
-                |
-              </span>
-              <div
-                className="text-xl ms-2 me-2
-              font-HakgyoansimWoojuR font-bold tracking-tight leading-10
-              text-space-blue py-1 rounded-full"
-              >
                 {smallCategory}
               </div>
               <span
@@ -133,6 +119,19 @@ const CurriCell: React.FC<CurriCellProps> = ({
               text-space-blue py-1 rounded-full"
               >
                 {difficulty}
+              </div>
+              <span
+                className="font-HakgyoansimWoojuR text-xl py-1
+              font-bold tracking-tight leading-10 text-gray-400 items-center"
+              >
+                |
+              </span>
+              <div
+                className="text-xl ms-2 me-2
+              font-HakgyoansimWoojuR font-bold tracking-tight leading-10
+              text-space-blue py-1 rounded-full"
+              >
+                {language}
               </div>
             </div>
           </div>

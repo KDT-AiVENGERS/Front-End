@@ -47,6 +47,10 @@ body {
   animation: glow_silver 2s ease-in-out infinite;
 }
 
+#emphasis {
+  animation: glow_yellow-weak 2s ease-in-out infinite;
+}
+
 @keyframes glow_yellow {
   0% {
     text-shadow: 0 0 2px #f7d64d, 0 0 5px #f7d64d, 0 0 10px #f7d64d,
@@ -56,6 +60,23 @@ body {
   50% {
     text-shadow: 0 0 10px #f7d64d, 0 0 20px #f7d64d, 0 0 40px #f7d64d,
       0 0 80px #f7d64d, 0 0 160px #f7d64d;
+  }
+
+  100% {
+    text-shadow: 0 0 2px #f7d64d, 0 0 5px #f7d64d, 0 0 10px #f7d64d,
+      0 0 20px #f7d64d, 0 0 40px #f7d64d;
+  }
+}
+
+@keyframes glow_yellow-weak {
+  0% {
+    text-shadow: 0 0 2px #f7d64d, 0 0 5px #f7d64d, 0 0 10px #f7d64d,
+      0 0 20px #f7d64d, 0 0 40px #f7d64d;
+  }
+
+  50% {
+    text-shadow: 0 0 8px #f7d64d, 0 0 9px #f7d64d, 0 0 10px #f7d64d,
+      0 0 12px #f7d64d, 0 0 15px #f7d64d;
   }
 
   100% {

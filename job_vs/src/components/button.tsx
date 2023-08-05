@@ -19,7 +19,7 @@ const Button: React.FC<ButtonProps> = ({
       <button
         onClick={onClick}
         className={`w-64 h-20 px-4 rounded-2xl ${bgColor} text-space-dark-blue font-HakgyoansimWoojuR tracking-wider text-3xl
-         hover:${hoverColor} hover:text-white hover:scale-110 transition ease-in-out delay-50 flex items-center justify-center ${className}`}
+         hover:${hoverColor} hover:scale-110 hover:font-black transition ease-in-out delay-50 flex items-center justify-center ${className}`}
       >
         {children}
       </button>
