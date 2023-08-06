@@ -1,4 +1,3 @@
-"use client";
 import Image from "next/image";
 import { FadeButton } from "@/components/fadeButton";
 import { Button } from "@/components/button";

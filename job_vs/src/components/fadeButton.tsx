@@ -1,3 +1,4 @@
+"use client";
 import { ButtonProps } from "@/interfaces/components";
 import React, { useEffect, useState } from "react";
 
