@@ -1,11 +1,29 @@
 "use client";
 import Image from "next/image";
-import { dummyCurri } from "@/app/dummyData";
+import { dummyJD } from "@/app/dummyData";
 import { CurriCell } from "@/components/curriCell";
-import { CurriCellProps } from "@/interfaces/components";
+import { JDRecommendSummary } from "@/components/jdRecommendSummary";
+import {
+  JDRecommendCellProps,
+  RecommendMetricsDatum,
+} from "@/interfaces/components";
+import { useState, useEffect } from "react";
+import { JDRecommendCell } from "@/components/jdRecommendCell";
 
 export default function Home() {
-  const recommendedArray: CurriCellProps[] = new Array(6).fill(dummyCurri);
+  const recommendedArray: JDRecommendCellProps[] = new Array(6).fill(dummyJD);
+  const [didMake, setDidMake] = useState(false);
+  useEffect(() => {
+    setDidMake(true);
+  }, []);
+
+  const recommendMetrics: RecommendMetricsDatum[] = [
+    { key: "전공", value: 5 },
+    { key: "능력", value: 3 },
+    { key: "아무", value: 2 },
+    { key: "거나", value: 4 },
+    { key: "쓰자", value: 1 },
+  ];
   return (
     <>
       <div className="bg-main-background-color min-h-screen relative">
@@ -14,33 +32,48 @@ export default function Home() {
             <img
               src="/images/onboarding/mainPageUpscaled.png"
               alt="background-image"
-              className="h-1/2 absolute z-10 object-cover opacity-30"
+              className="h-1/2 absolute z-10 object-cover animate-fade-in
+              opacity-30"
             ></img>
           </div>
         </div>
         <main className="relative z-20 flex min-h-screen flex-col gap-8 items-center">
           <div className="h-32" />
-          <h1
-            id="emphasis"
-            className="font-SpoqaHanSansNeo font-bold tracking-tighter text-white text-6xl"
+          <div
+            id="gold"
+            className="font-SpoqaHanSansNeo 
+            font-bold tracking-tighter text-white text-6xl"
           >
-            AI가 뽑은 당신에게 맞는 공고
-          </h1>
+            당신의 맞춤 공고 추천
+          </div>
+          <JDRecommendSummary
+            recommendMetrics={recommendMetrics}
+            bestKeyword="웹개발자"
+          />
           <div className="h-28" />
-          {recommendedArray.map((value) => (
-            <div className="CurriCell">
-              <CurriCell
-                largeCategory={value.largeCategory}
-                smallCategory={value.smallCategory}
-                title={value.title}
-                difficulty={value.difficulty}
-                requiredTime={value.requiredTime}
+          <div
+            id="silver"
+            className="font-SpoqaHanSansNeo 
+            font-bold tracking-tighter text-white text-5xl"
+          >
+            맞춤 공고 추천 목록
+          </div>
+          <div className="h-8" />
+
+          <div className="animate-make-cell w-full flex flex-col gap-8 items-center">
+            {recommendedArray.map((value) => (
+              <JDRecommendCell
+                jdName={value.jdName}
+                job={value.job}
+                yearOfExperience={value.yearOfExperience}
                 introduction={value.introduction}
-                language={value.language}
+                qualificationRequirements={value.qualificationRequirements}
+                preferentialTreatment={value.preferentialTreatment}
+                welfare={value.welfare}
                 url={value.url}
               />
-            </div>
-          ))}
+            ))}
+          </div>
           <div className="h-64" />
         </main>
       </div>

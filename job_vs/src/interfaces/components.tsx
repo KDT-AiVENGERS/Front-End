@@ -75,6 +75,7 @@ export interface CurriCellProps {
   introduction: string;
   language: string;
   url: string;
+  didMake: boolean;
 }
 
 export interface OnboardingProps {

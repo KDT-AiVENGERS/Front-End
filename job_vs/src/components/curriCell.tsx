@@ -2,6 +2,7 @@ import { CurriCellProps } from "@/interfaces/components";
 import { Button } from "@/components/button";
 import React, { useState } from "react";
 import Linkify from "react-linkify";
+import styles from "@/styles/CurriCell.module.css";
 
 const CurriCell: React.FC<CurriCellProps> = ({
   largeCategory,

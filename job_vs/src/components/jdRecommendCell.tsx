@@ -19,7 +19,7 @@ const JDRecommendCell: React.FC<JDRecommendCellProps> = ({
       return (
         <div
           className="text-xl font-HakgyoansimWoojuR font-bold tracking-tight leading-10
-    text-space-blue ps-1 py-1 rounded-full"
+        text-space-yellow ps-1 py-1 rounded-full"
         >
           경력 무관{" "}
         </div>
@@ -30,11 +30,11 @@ const JDRecommendCell: React.FC<JDRecommendCellProps> = ({
       return (
         <div
           className='text-xl 
-      font-HakgyoansimWoojuR font-bold tracking-tight leading-10
-      text-space-blue ps-1 py-1 rounded-full"'
+      font-HakgyoansimWoojuR tracking-tight leading-10
+      text-space-yellow ps-1 py-1 rounded-full"'
         >
           경력{" "}
-          <span className=" text-space-red font-SpoqaHanSansNeo font-bold tracking-tight leading-10">
+          <span className=" text-2xl text-space-light-red font-SpoqaHanSansNeo font-bold tracking-tight leading-10">
             {yearOfExperience}
           </span>{" "}
           년 이상
@@ -49,7 +49,7 @@ const JDRecommendCell: React.FC<JDRecommendCellProps> = ({
       key={key}
       target="_blank"
       rel="noreferrer noopener"
-      style={{ color: "blue" }}
+      style={{ color: "#3757D0" }}
     >
       {text}
     </a>
@@ -75,16 +75,16 @@ const JDRecommendCell: React.FC<JDRecommendCellProps> = ({
 
   if (isFilped) {
     return (
-      <div className="flex w-3/5 justify-between bg-white rounded-2xl">
+      <div className="flex w-3/5 justify-between bg-gray-900 rounded-2xl">
         <div className="flex flex-col">
-          <div className="text-3xl ms-4 mt-4 font-HakgyoansimWoojuR font-bold tracking-tight leading-10">
+          <div className="text-white text-3xl ms-4 mt-4 font-HakgyoansimWoojuR font-bold tracking-tight leading-10">
             {jdName}
           </div>
           <div className="flex">
             <div
               className="text-xl ms-4
               font-HakgyoansimWoojuR font-bold tracking-tight leading-10
-              text-space-blue pe-1 py-1 rounded-full"
+              text-space-yellow pe-1 py-1 rounded-full"
             >
               {job}
             </div>
@@ -106,17 +106,17 @@ const JDRecommendCell: React.FC<JDRecommendCellProps> = ({
     );
   } else {
     return (
-      <div className="flex flex-col w-3/5 bg-white rounded-2xl">
+      <div className="flex flex-col w-3/5 bg-gray-900 rounded-2xl">
         <div className="flex w-full justify-between">
           <div className="flex flex-col">
-            <div className="text-3xl ms-4 mt-4 font-HakgyoansimWoojuR font-bold tracking-tight leading-10">
+            <div className="text-white text-3xl ms-4 mt-4 font-HakgyoansimWoojuR font-bold tracking-tight leading-10">
               {jdName}
             </div>
             <div className="flex">
               <div
                 className="text-xl ms-4
           font-HakgyoansimWoojuR font-bold tracking-tight leading-10
-          text-space-blue pe-1 py-1 rounded-full"
+          text-space-yellow pe-1 py-1 rounded-full"
               >
                 {job}
               </div>
@@ -141,12 +141,12 @@ const JDRecommendCell: React.FC<JDRecommendCellProps> = ({
               <div key={index}>
                 <div
                   className="font-HakgyoansimWoojuR font-bold tracking-tight 
-                 bg-gray-200 rounded-2xl px-2 py-2 w-1/6 leading-10
+                 bg-gray-600 text-white rounded-2xl px-2 py-2 w-1/6 leading-10
                  text-2xl mt-10 mb-5 text-center ms-2"
                 >
                   {key}
                 </div>
-                <div className="font-SpoqaHanSansNeo text-lg font-regular tracking-tight leading-10 ms-5 mb-10 me-3 whitespace-pre-line">
+                <div className="font-SpoqaHanSansNeo text-white text-lg font-regular tracking-tight leading-10 ms-5 mb-10 me-3 whitespace-pre-line">
                   <Linkify componentDecorator={componentDecorator}>
                     {value}
                   </Linkify>
@@ -167,11 +167,12 @@ const JDRecommendCell: React.FC<JDRecommendCellProps> = ({
               공고사이트 가기
             </Button>
             <Button
+              id="silverButton"
               className="w-80 text-space-dark-yellow"
               newButtonColorClassName="bg-space-dark-blue"
               onClick={() => {}}
             >
-              연관 커리큘럼 추천받기
+              강의 추천받기
             </Button>
           </div>
         </div>

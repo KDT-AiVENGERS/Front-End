@@ -8,20 +8,23 @@ module.exports = {
   theme: {
     extend: {
       animation: {
-        glow: "glow 5s linear infinite",
+        "make-cell": "make-cell 0.5s linear",
+        "fade-in": "fade-in 0.5s linear",
+        "fade-in-delay": "fade-in-delay 0.5s linear",
       },
       keyframes: {
-        glow: {
-          "0%": { textShadow: "none" },
-          "100%": {
-            textShadow: [
-              "0 0 10px #F7D64D",
-              "0 0 20px #F7D64D",
-              "0 0 40px #F7D64D",
-              "0 0 80px #F7D64D",
-              "0 0 160px #F7D64D",
-            ],
-          },
+        "make-cell": {
+          "0%": { opacity: 0 },
+          "100%": { opacity: 1 },
+        },
+        "fade-in": {
+          "0%": { opacity: 0 },
+          "100%": { opacity: 0.3 },
+        },
+        "fade-in-delay": {
+          "0%": { opacity: 0 },
+          "50%": { opacity: 0 },
+          "100%": { opacity: 0.3 },
         },
       },
       height: {
