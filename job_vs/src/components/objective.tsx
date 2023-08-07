@@ -2,7 +2,12 @@
 import React, { useState } from "react";
 import { Button, LongButton } from "@/components/button";
 import { ObjectiveProps, ObjectiveTypes } from "@/interfaces/components";
-const Objective: React.FC<ObjectiveProps> = ({ type, options }) => {
+const Objective: React.FC<ObjectiveProps> = ({
+  type,
+  options,
+  questionIndex,
+  onChange,
+}) => {
   if (type === ObjectiveTypes.singleChoice) {
     const [buttonState, setButtonState] = useState<number>(-1);
 
@@ -39,10 +44,22 @@ const Objective: React.FC<ObjectiveProps> = ({ type, options }) => {
       options.map((n) => false)
     );
 
+    const changeState = (newState: boolean[]) => {
+      const newOuterState: string[] = newState
+        .map((item, index) => {
+          if (item) {
+            return options[index]?.optionName;
+          }
+        })
+        .filter(Boolean) as string[];
+      onChange(newOuterState, questionIndex);
+    };
+
     const selectButton = (buttonId: number) => {
       const newState = [...buttonState];
       newState[buttonId] = !newState[buttonId];
       setButtonState(newState);
+      changeState(newState);
     };
     return (
       <div className="flex flex-row">
@@ -71,7 +88,12 @@ const Objective: React.FC<ObjectiveProps> = ({ type, options }) => {
   }
 };
 
-const LongObjective: React.FC<ObjectiveProps> = ({ type, options }) => {
+const LongObjective: React.FC<ObjectiveProps> = ({
+  type,
+  questionIndex,
+  options,
+  onChange,
+}) => {
   if (type === ObjectiveTypes.singleChoice) {
     const [buttonState, setButtonState] = useState<number>(-1);
 
@@ -113,10 +135,22 @@ const LongObjective: React.FC<ObjectiveProps> = ({ type, options }) => {
       options.map((n) => false)
     );
 
+    const changeState = (newState: boolean[]) => {
+      const newOuterState: string[] = newState
+        .map((item, index) => {
+          if (item) {
+            return options[index]?.optionName;
+          }
+        })
+        .filter(Boolean) as string[];
+      onChange(newOuterState, questionIndex);
+    };
+
     const selectButton = (buttonId: number) => {
       const newState = [...buttonState];
       newState[buttonId] = !newState[buttonId];
       setButtonState(newState);
+      changeState(newState);
     };
     return (
       <div className="flex flex-col gap-10">

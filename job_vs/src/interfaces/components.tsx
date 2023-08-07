@@ -26,7 +26,14 @@ export interface SubjectiveProps
   extends React.InputHTMLAttributes<HTMLInputElement> {
   placeholder?: string;
   onChange: (e: ChangeEvent<HTMLInputElement>) => void;
+  onStateChange: (newState: string[], index: number) => void;
   className?: string;
+  questionIndex: number;
+}
+
+export interface SkillProps {
+  questionIndex: number;
+  onChange: (newState: string[], index: number) => void;
 }
 
 export interface SkillSearchDropdownProps {
@@ -54,6 +61,8 @@ export enum ObjectiveTypes {
 export interface ObjectiveProps {
   type: ObjectiveTypes;
   options: QuestionOption[];
+  questionIndex: number;
+  onChange: (newState: string[], index: number) => void;
 }
 
 export interface RecommendMetricsDatum {

@@ -1,11 +1,12 @@
 "use client";
 import { SkillSearchDropdown } from "@/components/skillSearchDropdown";
-import { SkillStack } from "@/interfaces/components";
+import { SkillProps, SkillStack } from "@/interfaces/components";
 import { Bubble } from "@/components/bubble";
-import { Button } from "@/components/button";
+import { RoundButton } from "@/components/button";
 import React, { useState } from "react";
+import { toast, Toaster } from "react-hot-toast";
 
-const Skill: React.FC = () => {
+const Skill: React.FC<SkillProps> = ({ questionIndex, onChange }) => {
   const _ = require("lodash");
   const skillStack: { label: string; value: string }[] = [
     { label: "Python", value: "python" },
@@ -35,6 +36,10 @@ const Skill: React.FC = () => {
     });
   };
 
+  const changeState = (newState: string[]) => {
+    onChange(newState, questionIndex);
+  };
+
   const plusButtonClicked = () => {
     if (
       searchedSkillStack &&
@@ -42,14 +47,34 @@ const Skill: React.FC = () => {
         _.isEqual(searchedSkillStack, selectedSkill)
       )
     ) {
-      setSelectedSkillStack((prev) => [...prev, searchedSkillStack]);
+      const newSelectedSkillStack = [...selectedSkillStack, searchedSkillStack];
+      setSelectedSkillStack(newSelectedSkillStack);
       setSearchedSkillStack(null);
+      changeState(
+        newSelectedSkillStack.map((item) => {
+          return item.value;
+        })
+      );
+    }
+    if (
+      selectedSkillStack.some((registeredItem) =>
+        _.isEqual(searchedSkillStack, registeredItem)
+      )
+    ) {
+      setSearchedSkillStack(null);
+      toast.error("같은 데이터가 이미 입력되었어요!");
     }
   };
 
   const cancelButtonClicked = (cancelSkill: SkillStack) => {
-    setSelectedSkillStack(
-      selectedSkillStack.filter((skill) => !_.isEqual(skill, cancelSkill))
+    const newSelectedSkillStack = selectedSkillStack.filter(
+      (skill) => !_.isEqual(skill, cancelSkill)
+    );
+    setSelectedSkillStack(newSelectedSkillStack);
+    changeState(
+      newSelectedSkillStack.map((item) => {
+        return item.value;
+      })
     );
   };
 
@@ -68,12 +93,12 @@ const Skill: React.FC = () => {
           onChange={handleSearchComponent}
           value={searchedSkillStack}
         />
-        <Button
+        <RoundButton
           className="rounded-full w-14 h-14 pb-1 text-3xl font-Pretendard-500"
           onClick={plusButtonClicked}
         >
           +
-        </Button>
+        </RoundButton>
       </div>
 
       <div className="flex flex-row">
@@ -82,6 +107,14 @@ const Skill: React.FC = () => {
             {skillStack.label}
           </Bubble>
         ))}
+      </div>
+      <div>
+        <Toaster
+          position="bottom-center"
+          toastOptions={{
+            className: "mb-[20vh]",
+          }}
+        />
       </div>
     </div>
   );

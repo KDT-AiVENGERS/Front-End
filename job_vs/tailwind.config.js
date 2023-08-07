@@ -8,9 +8,9 @@ module.exports = {
   theme: {
     extend: {
       animation: {
-        "make-cell": "make-cell 0.5s linear",
-        "fade-in": "fade-in 0.5s linear",
-        "fade-in-delay": "fade-in-delay 0.5s linear",
+        "make-cell": "make-cell 0.4s linear",
+        "fade-in": "fade-in 0.4s linear",
+        "fade-in-delay": "fade-in-delay 0.2s linear",
       },
       keyframes: {
         "make-cell": {

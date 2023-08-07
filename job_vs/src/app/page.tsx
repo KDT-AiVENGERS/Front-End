@@ -5,11 +5,14 @@ import { Button } from "@/components/button";
 import { Onboarding } from "@/components/onboarding";
 import { Introduce } from "@/components/introduce";
 import Head from "next/head";
+import { useRouter } from "next/navigation";
 
 export default function Home() {
   const description: string = `안녕하세요 저희 서비스에
   오신 것을 환영합니다
   당신의 진로를 찾아드려요`;
+
+  const router = useRouter();
   return (
     <>
       <Head>
@@ -48,7 +51,7 @@ export default function Home() {
           <div className="fixed top-3/5">
             <FadeButton
               onClick={() => {
-                console.log("Button clicked!");
+                router.push("/qna");
               }}
             >
               시작하기
@@ -89,7 +92,7 @@ export default function Home() {
           <div className="h-64"></div>
           <Button
             onClick={() => {
-              console.log("Button clicked!");
+              router.push("/qna");
             }}
           >
             시작하기

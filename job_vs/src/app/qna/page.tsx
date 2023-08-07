@@ -10,30 +10,56 @@ import { PaginationButton } from "@/components/button";
 
 export default function Home() {
   const [currentQuestion, setCurrentQuestion] = useState(0);
-  const [answer, setAnswer] = useState([false, false, false, false, false]);
+  const [answer, setAnswer] = useState<string[][]>([[], [], [], [], []]);
+  const [countForAnimation, SetCountForAnimation] = useState(0);
+  const handleStateChange = (liftedState: string[], questionIndex: number) => {
+    setAnswer((prev) => {
+      const newState = [...prev];
+      newState[questionIndex] = liftedState;
+      console.log(newState);
+      return newState;
+    });
+  };
+
+  const handlePagination = (currentQuestion: number, direction: number) => {
+    setCurrentQuestion(currentQuestion + direction);
+    SetCountForAnimation((prev) => prev + 1);
+  };
+
   const renderQuestion = (question: Question) => {
     if (question.type === "multipleChoiceLong") {
       return (
         <LongObjective
           options={question.options}
+          questionIndex={question.questionIndex}
           type={ObjectiveTypes.multipleChoice}
+          onChange={handleStateChange}
         />
       );
     } else if (question.type === "multipleChoice") {
       return (
         <Objective
           options={question.options}
+          questionIndex={question.questionIndex}
           type={ObjectiveTypes.multipleChoice}
+          onChange={handleStateChange}
         />
       );
     } else if (question.type === "search") {
-      return <Skill />;
+      return (
+        <Skill
+          questionIndex={question.questionIndex}
+          onChange={handleStateChange}
+        />
+      );
     } else if (question.type === "subjective") {
       return (
         <Subjective
           placeholder={question.example}
           className=""
           onChange={() => {}}
+          questionIndex={question.questionIndex}
+          onStateChange={handleStateChange}
         />
       );
     }
@@ -51,8 +77,11 @@ export default function Home() {
             ></img>
           </div>
         </div>
-        <main className="relative z-20 flex min-h-screen flex-col gap-8 items-center animate-fade-in">
-          <div className="h-36" />
+        <main
+          key={countForAnimation}
+          className="relative z-20 flex min-h-screen flex-col gap-8 items-center animate-make-cell"
+        >
+          <div className="h-24" />
           <div
             id="question"
             className="font-HakgyoansimWoojuR
@@ -64,9 +93,20 @@ export default function Home() {
           <div>{renderQuestion(questions[currentQuestion])}</div>
           <div className="h-32"></div>
           <div className="w-2/3 flex justify-between">
-            <PaginationButton mode="prev" onClick={() => {}} />
-            <PaginationButton mode="next" onClick={() => {}} />
+            <PaginationButton
+              mode="prev"
+              onClick={() => {
+                handlePagination(currentQuestion, -1);
+              }}
+            />
+            <PaginationButton
+              mode="next"
+              onClick={() => {
+                handlePagination(currentQuestion, 1);
+              }}
+            />
           </div>
+          <div className="h-64"></div>
         </main>
       </div>
     </>

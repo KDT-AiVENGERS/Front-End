@@ -3,12 +3,14 @@ import React, { useState, ChangeEvent } from "react";
 import { SubjectiveProps } from "@/interfaces/components";
 import { SkillStack } from "@/interfaces/components";
 import { Bubble } from "@/components/bubble";
-import { Button } from "@/components/button";
+import { RoundButton } from "@/components/button";
 import { toast, Toaster } from "react-hot-toast";
 const Subjective: React.FC<SubjectiveProps> = ({
   placeholder,
   className,
   onChange,
+  onStateChange,
+  questionIndex,
 }) => {
   const [inputValue, setInputValue] = useState("");
 
@@ -27,6 +29,10 @@ const Subjective: React.FC<SubjectiveProps> = ({
     });
   };
 
+  const changeState = (newState: string[]) => {
+    onStateChange(newState, questionIndex);
+  };
+
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     setInputValue(e.target.value);
     handleSelectedItem(e.target.value);
@@ -40,9 +46,11 @@ const Subjective: React.FC<SubjectiveProps> = ({
         _.isEqual(selectedItem, registeredItem)
       )
     ) {
-      setRegisteredItems((prev) => [...prev, selectedItem]);
+      const newRegisteredItem = [...registeredItems, selectedItem];
+      setRegisteredItems(newRegisteredItem);
       setSelectedItem(null);
       setInputValue("");
+      changeState(newRegisteredItem);
     }
     if (
       registeredItems.some((registeredItem) =>
@@ -55,9 +63,11 @@ const Subjective: React.FC<SubjectiveProps> = ({
   };
 
   const cancelButtonClicked = (cancelItem: string) => {
-    setRegisteredItems(
-      registeredItems.filter((item) => !_.isEqual(item, cancelItem))
+    const newRegisteredItem = registeredItems.filter(
+      (item) => !_.isEqual(item, cancelItem)
     );
+    setRegisteredItems(newRegisteredItem);
+    changeState(newRegisteredItem);
   };
 
   const isString = (variable: any): variable is string => {
@@ -83,12 +93,12 @@ const Subjective: React.FC<SubjectiveProps> = ({
         transition-all ease-in-out delay-50 duration-200 ${className}`}
         />
         <div className="w-6"></div>
-        <Button
+        <RoundButton
           className="rounded-full w-14 h-14 pb-1 text-3xl font-Pretendard-500"
           onClick={plusButtonClicked}
         >
           +
-        </Button>
+        </RoundButton>
       </div>
 
       <div className="flex flex-row">
