@@ -37,8 +37,7 @@ const questions: Question[] = [
   },
   {
     type: "search",
-    question:
-      "보유중인 기술 스택이 있다면 골라주세요. 없으면 넘어가 주시면 됩니다",
+    question: `보유중인 기술 스택이 있다면 골라주세요.\n없으면 넘어가 주시면 됩니다`,
   },
   {
     type: "multipleChoiceLong",
@@ -66,8 +65,7 @@ const questions: Question[] = [
         optionDescription: "📔 온라인 강의, 도서, 시험비 등 자기계발비 지원",
       },
     ],
-    question:
-      "회사에 들어가게 된다면 가장 중요하게 생각하는 복지 3가지를 골라주세요",
+    question: `회사에 들어가게 된다면\n가장 중요하게 생각하는 복지 3가지를 골라주세요`,
   },
   {
     type: "subjective",

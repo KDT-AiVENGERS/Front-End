@@ -14,6 +14,14 @@ const customStyles: StylesConfig = {
     color: "black",
     borderRadius: "12px",
   }),
+  input: (provided, state) => ({
+    ...provided,
+    height: "3rem",
+  }),
+  placeholder: (provided) => ({
+    ...provided,
+    fontSize: "1.5rem",
+  }),
 };
 
 const SkillSearchDropdown: React.FC<SkillSearchDropdownProps> = ({

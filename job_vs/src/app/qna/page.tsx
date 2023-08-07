@@ -8,7 +8,7 @@ import { Skill } from "@/components/skill";
 import { Subjective } from "@/components/subjective";
 
 export default function Home() {
-  const [currentQuestion, setCurrentQuestion] = useState(3);
+  const [currentQuestion, setCurrentQuestion] = useState(4);
   const [answer, setAnswer] = useState([false, false, false, false, false]);
   const renderQuestion = (question: Question) => {
     if (question.type === "multipleChoiceLong") {
@@ -50,15 +50,15 @@ export default function Home() {
             ></img>
           </div>
         </div>
-        <main className="relative z-20 flex min-h-screen flex-col gap-8 items-center">
+        <main className="relative z-20 flex min-h-screen flex-col gap-8 items-center animate-fade-in">
           <div className="h-36" />
           <div
             className="font-HakgyoansimWoojuR
-            font-bold tracking-tighter text-white text-6xl whitespace-pre-line text-center leading-[5rem]"
+            font-bold tracking-tighter text-white text-[3.5rem] whitespace-pre-line text-center leading-[5rem]"
           >
             {questions[currentQuestion].question}
           </div>
-          <div className="h-64" />
+          <div className="h-32" />
           <div>{renderQuestion(questions[currentQuestion])}</div>
         </main>
       </div>

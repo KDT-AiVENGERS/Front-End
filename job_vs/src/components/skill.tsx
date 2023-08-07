@@ -69,7 +69,7 @@ const Skill: React.FC = () => {
           value={searchedSkillStack}
         />
         <Button
-          className="rounded-full w-8 h-8 pb-1 text-3xl font-Pretendard-500"
+          className="rounded-full w-14 h-14 pb-1 text-3xl font-Pretendard-500"
           onClick={plusButtonClicked}
         >
           +

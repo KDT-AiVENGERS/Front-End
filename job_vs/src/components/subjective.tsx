@@ -75,7 +75,7 @@ const Subjective: React.FC<SubjectiveProps> = ({
           className={`placeholder-gray-400 placeholder:font-HakgyoansimWoojuR
         placeholder:text-xl placeholder:text-center
         font-Pretendard-500
-        w-64 h-10
+        w-[32rem] h-[3rem]
         my-4 px-4 py-2 
         border border-gray-300 rounded-xl
         focus:outline-none focus:border-blue-500
@@ -84,7 +84,7 @@ const Subjective: React.FC<SubjectiveProps> = ({
         />
         <div className="w-6"></div>
         <Button
-          className="rounded-full w-8 h-8 pb-1 text-3xl font-Pretendard-500"
+          className="rounded-full w-14 h-14 pb-1 text-3xl font-Pretendard-500"
           onClick={plusButtonClicked}
         >
           +
@@ -102,7 +102,7 @@ const Subjective: React.FC<SubjectiveProps> = ({
         <Toaster
           position="bottom-center"
           toastOptions={{
-            className: "mb-[25rem]",
+            className: "mb-[20vh]",
           }}
         />
       </div>

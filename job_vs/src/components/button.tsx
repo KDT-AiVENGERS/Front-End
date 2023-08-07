@@ -42,7 +42,7 @@ const LongButton: React.FC<LongButtonProps> = ({
   const hoverColor = newHoverColorClassName ? newHoverColorClassName : "";
 
   return (
-    <div className="flex w-[64rem] items-center justify-center space-x-4 my-4">
+    <div className="flex w-[64rem] items-center justify-center space-x-4 my-4 me-[12rem]">
       <div className="w-full flex justify-between items-center">
         <div className="w-full flex justify-center">
           <div
