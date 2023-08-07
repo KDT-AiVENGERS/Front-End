@@ -1,4 +1,8 @@
-import { ButtonProps, LongButtonProps } from "@/interfaces/components";
+import {
+  ButtonProps,
+  LongButtonProps,
+  PaginationButtonProps,
+} from "@/interfaces/components";
 
 const Button: React.FC<ButtonProps> = ({
   id,
@@ -23,6 +27,31 @@ const Button: React.FC<ButtonProps> = ({
       >
         {children}
       </button>
+    </div>
+  );
+};
+
+const PaginationButton: React.FC<PaginationButtonProps> = ({
+  mode,
+  onClick,
+}) => {
+  return (
+    <div className="flex w-[64rem] h-10 items-center justify-center space-x-4 my-4">
+      <button onClick={onClick}>
+        <img
+          id="pagination"
+          src={`/images/qna/arrow_${mode}.png`}
+          alt={`${mode === "prev" ? "이전 질문" : "다음 질문"} 버튼`}
+          className="w-12 h-12 hover:w-16 hover:h-16 transition-all transition ease-in-out delay-50"
+        />
+      </button>
+      {/* <button
+        onClick={onClick}
+        className="w-64 h-20 px-4 rounded-2xl text-space-dark-blue font-HakgyoansimWoojuR tracking-wider text-3xl
+          hover:scale-110 hover:font-black transition ease-in-out delay-50 flex items-center justify-center"
+      >
+        {mode}
+      </button> */}
     </div>
   );
 };
@@ -66,4 +95,4 @@ const LongButton: React.FC<LongButtonProps> = ({
   );
 };
 
-export { Button, LongButton };
+export { Button, LongButton, PaginationButton };

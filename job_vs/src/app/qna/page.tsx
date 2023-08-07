@@ -6,9 +6,10 @@ import { LongObjective, Objective } from "@/components/objective";
 import { ObjectiveTypes } from "@/interfaces/components";
 import { Skill } from "@/components/skill";
 import { Subjective } from "@/components/subjective";
+import { PaginationButton } from "@/components/button";
 
 export default function Home() {
-  const [currentQuestion, setCurrentQuestion] = useState(4);
+  const [currentQuestion, setCurrentQuestion] = useState(0);
   const [answer, setAnswer] = useState([false, false, false, false, false]);
   const renderQuestion = (question: Question) => {
     if (question.type === "multipleChoiceLong") {
@@ -53,6 +54,7 @@ export default function Home() {
         <main className="relative z-20 flex min-h-screen flex-col gap-8 items-center animate-fade-in">
           <div className="h-36" />
           <div
+            id="question"
             className="font-HakgyoansimWoojuR
             font-bold tracking-tighter text-white text-[3.5rem] whitespace-pre-line text-center leading-[5rem]"
           >
@@ -60,6 +62,11 @@ export default function Home() {
           </div>
           <div className="h-32" />
           <div>{renderQuestion(questions[currentQuestion])}</div>
+          <div className="h-32"></div>
+          <div className="w-2/3 flex justify-between">
+            <PaginationButton mode="prev" onClick={() => {}} />
+            <PaginationButton mode="next" onClick={() => {}} />
+          </div>
         </main>
       </div>
     </>

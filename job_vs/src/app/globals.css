@@ -56,11 +56,20 @@ body {
 }
 
 #silverButton {
-  animation: fade_in 0.5s linear, glow_silver_comp 2s ease-in-out infinite;
+  animation: fade_in 0.5s linear, glow_silver_comp_weak 2s ease-in-out infinite;
 }
 
-#silver_weak {
+#silver_weak,
+#question {
   animation: glow_silver_weak 2s ease-in-out infinite;
+}
+
+#pagination {
+  animation: glow_silver_comp 2s ease-in-out infinite;
+}
+
+#glowButton {
+  filter: drop-shadow(0 0 2px #bdc3c7) drop-shadow(0 0 5px #bdc3c7);
 }
 
 @keyframes fade_in {
@@ -142,16 +151,32 @@ body {
 
 @keyframes glow_silver_comp {
   0% {
-    box-shadow: 0 0 2px #bdc3c7, 0 0 5px #bdc3c7, 0 0 10px #bdc3c7,
-      0 0 20px #bdc3c7, 0 0 40px #bdc3c7;
+    filter: drop-shadow(0 0 2px #bdc3c7) drop-shadow(0 0 5px #bdc3c7)
+      drop-shadow(0 0 10px #bdc3c7) drop-shadow(0 0 20px #bdc3c7);
   }
 
   50% {
-    box-shadow: 0 0 10px #bdc3c7, 0 0 20px #bdc3c7, 0 0 40px #bdc3c7,
-      0 0 80px #bdc3c7, 0 0 160px #bdc3c7;
+    filter: drop-shadow(0 0 10px #bdc3c7) drop-shadow(0 0 20px #bdc3c7)
+      drop-shadow(0 0 40px #bdc3c7) drop-shadow(0 0 80px #bdc3c7);
   }
   100% {
-    box-shadow: 0 0 2px #bdc3c7, 0 0 5px #bdc3c7, 0 0 10px #bdc3c7,
-      0 0 20px #bdc3c7, 0 0 40px #bdc3c7;
+    filter: drop-shadow(0 0 2px #bdc3c7) drop-shadow(0 0 5px #bdc3c7)
+      drop-shadow(0 0 10px #bdc3c7) drop-shadow(0 0 20px #bdc3c7);
+  }
+}
+
+@keyframes glow_silver_comp_weak {
+  0% {
+    filter: drop-shadow(0 0 2px #bdc3c7) drop-shadow(0 0 5px #bdc3c7)
+      drop-shadow(0 0 10px #bdc3c7);
+  }
+
+  50% {
+    filter: drop-shadow(0 0 10px #bdc3c7) drop-shadow(0 0 20px #bdc3c7)
+      drop-shadow(0 0 40px #bdc3c7);
+  }
+  100% {
+    filter: drop-shadow(0 0 2px #bdc3c7) drop-shadow(0 0 5px #bdc3c7)
+      drop-shadow(0 0 10px #bdc3c7);
   }
 }

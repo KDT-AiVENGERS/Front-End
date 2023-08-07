@@ -16,6 +16,12 @@ export interface LongButtonProps extends ButtonProps {
   example?: string;
 }
 
+export interface PaginationButtonProps
+  extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+  mode: string;
+  onClick: () => void;
+}
+
 export interface SubjectiveProps
   extends React.InputHTMLAttributes<HTMLInputElement> {
   placeholder?: string;
