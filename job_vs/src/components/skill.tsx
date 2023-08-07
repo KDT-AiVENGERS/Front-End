@@ -5,6 +5,7 @@ import { Bubble } from "@/components/bubble";
 import { RoundButton } from "@/components/button";
 import React, { useState } from "react";
 import { toast, Toaster } from "react-hot-toast";
+import { skillStack } from "@/app/qna/skillStackData";
 
 const Skill: React.FC<SkillProps> = ({
   questionIndex,
@@ -12,14 +13,6 @@ const Skill: React.FC<SkillProps> = ({
   currentState,
 }) => {
   const _ = require("lodash");
-  const skillStack: { label: string; value: string }[] = [
-    { label: "Python", value: "python" },
-    { label: "Java", value: "java" },
-    { label: "Whale", value: "Whale" },
-    { label: "Octopus", value: "Octopus" },
-    { label: "Crab", value: "Crab" },
-    { label: "Lobster", value: "Lobster" },
-  ];
 
   const [selectedSkillStack, setSelectedSkillStack] = useState<SkillStack[]>(
     currentState.map((item) => {
