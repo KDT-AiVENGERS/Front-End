@@ -1,3 +1,4 @@
+"use client";
 import { JDRecommendCellProps } from "@/interfaces/components";
 import { Button } from "@/components/button";
 import React, { useState } from "react";

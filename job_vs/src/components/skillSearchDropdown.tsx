@@ -6,7 +6,7 @@ const customStyles: StylesConfig = {
   option: (provided, state) => ({
     ...provided,
     color: state.isSelected ? "white" : "black",
-    backgroundColor: state.isSelected ? "rgb(255, 0, 0)" : "white",
+    backgroundColor: state.isSelected ? "#f8c471" : "white",
   }),
   control: (styles) => ({
     ...styles,
@@ -28,7 +28,7 @@ const SkillSearchDropdown: React.FC<SkillSearchDropdownProps> = ({
       <Select
         options={options}
         placeholder={placeholder}
-        className={`w-64 px-4 py-2 font-HakgyoansimWoojuR ${className}`}
+        className={`w-[32rem] px-4 py-2 font-HakgyoansimWoojuR ${className}`}
         styles={customStyles}
         onChange={onChange}
         value={value}

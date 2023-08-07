@@ -1,16 +1,42 @@
 "use client";
 import Image from "next/image";
-import { dummyCurri } from "@/app/dummyData";
-import { CurriCell } from "@/components/curriCell";
-import { CurriCellProps } from "@/interfaces/components";
-import { useState, useEffect } from "react";
+import { useState } from "react";
+import { Question, QuestionOption, questions } from "./qnaData";
+import { LongObjective, Objective } from "@/components/objective";
+import { ObjectiveTypes } from "@/interfaces/components";
+import { Skill } from "@/components/skill";
+import { Subjective } from "@/components/subjective";
 
 export default function Home() {
-  const recommendedArray: CurriCellProps[] = new Array(6).fill(dummyCurri);
-  const [didMake, setDidMake] = useState(false);
-  useEffect(() => {
-    setDidMake(true);
-  }, []);
+  const [currentQuestion, setCurrentQuestion] = useState(3);
+  const [answer, setAnswer] = useState([false, false, false, false, false]);
+  const renderQuestion = (question: Question) => {
+    if (question.type === "multipleChoiceLong") {
+      return (
+        <LongObjective
+          options={question.options}
+          type={ObjectiveTypes.multipleChoice}
+        />
+      );
+    } else if (question.type === "multipleChoice") {
+      return (
+        <Objective
+          options={question.options}
+          type={ObjectiveTypes.multipleChoice}
+        />
+      );
+    } else if (question.type === "search") {
+      return <Skill />;
+    } else if (question.type === "subjective") {
+      return (
+        <Subjective
+          placeholder={question.example}
+          className=""
+          onChange={() => {}}
+        />
+      );
+    }
+  };
   return (
     <>
       <div className="bg-main-background-color min-h-screen relative">
@@ -25,30 +51,15 @@ export default function Home() {
           </div>
         </div>
         <main className="relative z-20 flex min-h-screen flex-col gap-8 items-center">
-          <div className="h-32" />
+          <div className="h-36" />
           <div
-            id="gold"
-            className="font-SpoqaHanSansNeo 
-            font-bold tracking-tighter text-white text-6xl"
+            className="font-HakgyoansimWoojuR
+            font-bold tracking-tighter text-white text-6xl whitespace-pre-line text-center leading-[5rem]"
           >
-            당신의 맞춤 강의 추천
-          </div>
-          <div className="h-28" />
-          <div className="animate-make-cell w-full flex flex-col gap-8 items-center">
-            {recommendedArray.map((value) => (
-              <CurriCell
-                largeCategory={value.largeCategory}
-                smallCategory={value.smallCategory}
-                title={value.title}
-                difficulty={value.difficulty}
-                requiredTime={value.requiredTime}
-                introduction={value.introduction}
-                language={value.language}
-                url={value.url}
-              />
-            ))}
+            {questions[currentQuestion].question}
           </div>
           <div className="h-64" />
+          <div>{renderQuestion(questions[currentQuestion])}</div>
         </main>
       </div>
     </>

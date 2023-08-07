@@ -1,8 +1,9 @@
+"use client";
 import { SkillSearchDropdown } from "@/components/skillSearchDropdown";
 import { SkillStack } from "@/interfaces/components";
 import { Bubble } from "@/components/bubble";
 import { Button } from "@/components/button";
-import React, { useState, useEffect, ChangeEvent } from "react";
+import React, { useState } from "react";
 
 const Skill: React.FC = () => {
   const _ = require("lodash");

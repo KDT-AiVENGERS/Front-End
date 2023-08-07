@@ -1,4 +1,3 @@
-"use client";
 import Image from "next/image";
 import { dummyJD } from "@/app/dummyData";
 import { CurriCell } from "@/components/curriCell";
@@ -7,15 +6,10 @@ import {
   JDRecommendCellProps,
   RecommendMetricsDatum,
 } from "@/interfaces/components";
-import { useState, useEffect } from "react";
 import { JDRecommendCell } from "@/components/jdRecommendCell";
 
 export default function Home() {
   const recommendedArray: JDRecommendCellProps[] = new Array(6).fill(dummyJD);
-  const [didMake, setDidMake] = useState(false);
-  useEffect(() => {
-    setDidMake(true);
-  }, []);
 
   const recommendMetrics: RecommendMetricsDatum[] = [
     { key: "전공", value: 5 },

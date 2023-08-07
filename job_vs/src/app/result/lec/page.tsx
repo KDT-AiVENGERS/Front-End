@@ -1,4 +1,3 @@
-"use client";
 import Image from "next/image";
 import { dummyCurri } from "@/app/dummyData";
 import { CurriCell } from "@/components/curriCell";
@@ -7,10 +6,7 @@ import { useState, useEffect } from "react";
 
 export default function Home() {
   const recommendedArray: CurriCellProps[] = new Array(6).fill(dummyCurri);
-  const [didMake, setDidMake] = useState(false);
-  useEffect(() => {
-    setDidMake(true);
-  }, []);
+
   return (
     <>
       <div className="bg-main-background-color min-h-screen relative">

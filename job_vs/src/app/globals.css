@@ -59,6 +59,10 @@ body {
   animation: fade_in 0.5s linear, glow_silver_comp 2s ease-in-out infinite;
 }
 
+#silver_weak {
+  animation: glow_silver_weak 2s ease-in-out infinite;
+}
+
 @keyframes fade_in {
   0% {
     opacity: 0;

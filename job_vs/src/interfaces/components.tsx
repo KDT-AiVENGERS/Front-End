@@ -1,6 +1,7 @@
 import { ChangeEvent } from "react";
 import { ActionMeta } from "react-select";
 import { BarDatum } from "@nivo/bar";
+import { QuestionOption } from "@/app/qna/qnaData";
 
 export interface ButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement> {
@@ -9,6 +10,10 @@ export interface ButtonProps
   onClick: () => void;
   newButtonColorClassName?: string;
   newHoverColorClassName?: string;
+}
+
+export interface LongButtonProps extends ButtonProps {
+  example?: string;
 }
 
 export interface SubjectiveProps
@@ -42,7 +47,7 @@ export enum ObjectiveTypes {
 }
 export interface ObjectiveProps {
   type: ObjectiveTypes;
-  options: string[];
+  options: QuestionOption[];
 }
 
 export interface RecommendMetricsDatum {
@@ -75,7 +80,6 @@ export interface CurriCellProps {
   introduction: string;
   language: string;
   url: string;
-  didMake: boolean;
 }
 
 export interface OnboardingProps {
