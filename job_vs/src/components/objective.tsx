@@ -7,6 +7,7 @@ const Objective: React.FC<ObjectiveProps> = ({
   options,
   questionIndex,
   onChange,
+  currentState,
 }) => {
   if (type === ObjectiveTypes.singleChoice) {
     const [buttonState, setButtonState] = useState<number>(-1);
@@ -40,9 +41,15 @@ const Objective: React.FC<ObjectiveProps> = ({
       </div>
     );
   } else {
-    const [buttonState, setButtonState] = useState<boolean[]>(
-      options.map((n) => false)
-    );
+    const [buttonState, setButtonState] = useState<boolean[]>(() => {
+      let newState: boolean[] = options.map((n) => false);
+      options.map((item, index) => {
+        if (currentState.includes(item.optionName)) {
+          newState[index] = true;
+        }
+      });
+      return newState;
+    });
 
     const changeState = (newState: boolean[]) => {
       const newOuterState: string[] = newState
@@ -93,6 +100,7 @@ const LongObjective: React.FC<ObjectiveProps> = ({
   questionIndex,
   options,
   onChange,
+  currentState,
 }) => {
   if (type === ObjectiveTypes.singleChoice) {
     const [buttonState, setButtonState] = useState<number>(-1);
@@ -131,9 +139,15 @@ const LongObjective: React.FC<ObjectiveProps> = ({
       </div>
     );
   } else {
-    const [buttonState, setButtonState] = useState<boolean[]>(
-      options.map((n) => false)
-    );
+    const [buttonState, setButtonState] = useState<boolean[]>(() => {
+      let newState: boolean[] = options.map((n) => false);
+      options.map((item, index) => {
+        if (currentState.includes(item.optionName)) {
+          newState[index] = true;
+        }
+      });
+      return newState;
+    });
 
     const changeState = (newState: boolean[]) => {
       const newOuterState: string[] = newState

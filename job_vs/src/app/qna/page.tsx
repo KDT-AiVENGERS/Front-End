@@ -34,6 +34,7 @@ export default function Home() {
           questionIndex={question.questionIndex}
           type={ObjectiveTypes.multipleChoice}
           onChange={handleStateChange}
+          currentState={answer[question.questionIndex]}
         />
       );
     } else if (question.type === "multipleChoice") {
@@ -43,6 +44,7 @@ export default function Home() {
           questionIndex={question.questionIndex}
           type={ObjectiveTypes.multipleChoice}
           onChange={handleStateChange}
+          currentState={answer[question.questionIndex]}
         />
       );
     } else if (question.type === "search") {
@@ -50,6 +52,7 @@ export default function Home() {
         <Skill
           questionIndex={question.questionIndex}
           onChange={handleStateChange}
+          currentState={answer[question.questionIndex]}
         />
       );
     } else if (question.type === "subjective") {
@@ -60,6 +63,7 @@ export default function Home() {
           onChange={() => {}}
           questionIndex={question.questionIndex}
           onStateChange={handleStateChange}
+          currentState={answer[question.questionIndex]}
         />
       );
     }

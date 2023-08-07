@@ -6,7 +6,11 @@ import { RoundButton } from "@/components/button";
 import React, { useState } from "react";
 import { toast, Toaster } from "react-hot-toast";
 
-const Skill: React.FC<SkillProps> = ({ questionIndex, onChange }) => {
+const Skill: React.FC<SkillProps> = ({
+  questionIndex,
+  onChange,
+  currentState,
+}) => {
   const _ = require("lodash");
   const skillStack: { label: string; value: string }[] = [
     { label: "Python", value: "python" },
@@ -16,8 +20,11 @@ const Skill: React.FC<SkillProps> = ({ questionIndex, onChange }) => {
     { label: "Crab", value: "Crab" },
     { label: "Lobster", value: "Lobster" },
   ];
+
   const [selectedSkillStack, setSelectedSkillStack] = useState<SkillStack[]>(
-    []
+    currentState.map((item) => {
+      return { label: item, value: item };
+    })
   );
   const [searchedSkillStack, setSearchedSkillStack] =
     useState<SkillStack | null>(null);
@@ -44,7 +51,7 @@ const Skill: React.FC<SkillProps> = ({ questionIndex, onChange }) => {
     if (
       searchedSkillStack &&
       !selectedSkillStack.some((selectedSkill) =>
-        _.isEqual(searchedSkillStack, selectedSkill)
+        _.isEqual(searchedSkillStack.value, selectedSkill.value)
       )
     ) {
       const newSelectedSkillStack = [...selectedSkillStack, searchedSkillStack];
@@ -58,7 +65,7 @@ const Skill: React.FC<SkillProps> = ({ questionIndex, onChange }) => {
     }
     if (
       selectedSkillStack.some((registeredItem) =>
-        _.isEqual(searchedSkillStack, registeredItem)
+        _.isEqual(searchedSkillStack.value, registeredItem.value)
       )
     ) {
       setSearchedSkillStack(null);
@@ -68,7 +75,7 @@ const Skill: React.FC<SkillProps> = ({ questionIndex, onChange }) => {
 
   const cancelButtonClicked = (cancelSkill: SkillStack) => {
     const newSelectedSkillStack = selectedSkillStack.filter(
-      (skill) => !_.isEqual(skill, cancelSkill)
+      (skill) => !_.isEqual(skill.value, cancelSkill.value)
     );
     setSelectedSkillStack(newSelectedSkillStack);
     changeState(

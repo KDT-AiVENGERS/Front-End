@@ -1,7 +1,6 @@
 "use client";
 import React, { useState, ChangeEvent } from "react";
 import { SubjectiveProps } from "@/interfaces/components";
-import { SkillStack } from "@/interfaces/components";
 import { Bubble } from "@/components/bubble";
 import { RoundButton } from "@/components/button";
 import { toast, Toaster } from "react-hot-toast";
@@ -11,11 +10,13 @@ const Subjective: React.FC<SubjectiveProps> = ({
   onChange,
   onStateChange,
   questionIndex,
+  currentState,
 }) => {
   const [inputValue, setInputValue] = useState("");
 
   const _ = require("lodash");
-  const [registeredItems, setRegisteredItems] = useState<string[]>([]);
+  const [registeredItems, setRegisteredItems] =
+    useState<string[]>(currentState);
   const [selectedItem, setSelectedItem] = useState<string | null>(null);
 
   const handleSelectedItem = (newValue: any) => {

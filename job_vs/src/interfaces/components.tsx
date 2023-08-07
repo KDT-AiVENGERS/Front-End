@@ -29,11 +29,13 @@ export interface SubjectiveProps
   onStateChange: (newState: string[], index: number) => void;
   className?: string;
   questionIndex: number;
+  currentState: string[];
 }
 
 export interface SkillProps {
   questionIndex: number;
   onChange: (newState: string[], index: number) => void;
+  currentState: string[];
 }
 
 export interface SkillSearchDropdownProps {
@@ -63,6 +65,7 @@ export interface ObjectiveProps {
   options: QuestionOption[];
   questionIndex: number;
   onChange: (newState: string[], index: number) => void;
+  currentState: string[];
 }
 
 export interface RecommendMetricsDatum {
