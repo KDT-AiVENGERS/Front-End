@@ -8,9 +8,15 @@ import Head from "next/head";
 import { useRouter } from "next/navigation";
 
 export default function Home() {
-  const description: string = `안녕하세요 저희 서비스에
-  오신 것을 환영합니다
-  당신의 진로를 찾아드려요`;
+  const description: string[] = [
+    `주어진 질문에 답변해주세요
+  AI가 알맞은 공고를 추천해드릴게요`,
+    `추천된 공고를 확인해보세요
+  마음에 드는 공고를 선택하고,
+  강의 추천받기 버튼을 눌러주세요`,
+    `선택한 공고에 맞는 강의 목록이예요
+  추천해드린 강의로 합격 확률을 높여보세요`,
+  ];
 
   const router = useRouter();
   return (
@@ -44,7 +50,7 @@ export default function Home() {
             className=" font-OmyuPretty 
         tracking-widest text-white text-3xl"
           >
-            당신의 취준을 도와줄 길잡이별
+            AI가 당신의 취업을 도와드릴게요
           </h2>
           <div className="h-64" />
           <div className="h-64" />
@@ -66,27 +72,27 @@ export default function Home() {
           <div className="h-64"></div>
 
           <Onboarding
-            imagePath="/images/onboarding/polar-bear.png"
-            imageAlt="북극곰"
-            title="안녕하세요"
-            description={description}
+            imagePath="/images/onboarding/icon_1.png"
+            imageAlt="QnA"
+            title="STEP 1"
+            description={description[0]}
           />
           <div className="h-64"></div>
 
           <Onboarding
-            imagePath="/images/onboarding/polar-bear.png"
-            imageAlt="북극곰"
-            title="안녕하세요"
-            description={description}
+            imagePath="/images/onboarding/icon_2.png"
+            imageAlt="Get Idea"
+            title="STEP 2"
+            description={description[1]}
           />
 
           <div className="h-64"></div>
 
           <Onboarding
-            imagePath="/images/onboarding/polar-bear.png"
-            imageAlt="북극곰"
-            title="안녕하세요"
-            description={description}
+            imagePath="/images/onboarding/icon_3.png"
+            imageAlt="Get Recommend"
+            title="STEP 3"
+            description={description[2]}
           />
 
           <div className="h-64"></div>

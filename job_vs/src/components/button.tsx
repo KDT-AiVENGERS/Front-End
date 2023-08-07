@@ -61,24 +61,37 @@ const RoundButton: React.FC<ButtonProps> = ({
 const PaginationButton: React.FC<PaginationButtonProps> = ({
   mode,
   onClick,
+  isGlow,
 }) => {
   return (
     <div className="flex w-[64rem] h-10 items-center justify-center space-x-4 my-4">
       <button onClick={onClick}>
         <img
-          id="pagination"
+          id={`${isGlow ? "pagination" : "pagination_nonglow"}`}
           src={`/images/qna/arrow_${mode}.png`}
           alt={`${mode === "prev" ? "이전 질문" : "다음 질문"} 버튼`}
-          className="w-12 h-12 hover:w-16 hover:h-16 transition-all transition ease-in-out delay-50"
+          className={`w-12 h-12 ${
+            isGlow ? "hover:w-16 hover:h-16" : ""
+          } transition-all transition ease-in-out delay-50`}
         />
       </button>
-      {/* <button
+    </div>
+  );
+};
+
+const RecommendStartButton: React.FC<
+  React.ButtonHTMLAttributes<HTMLButtonElement>
+> = ({ onClick }) => {
+  return (
+    <div className="flex w-[64rem] h-10 items-center justify-center space-x-4 my-4">
+      <button
+        id="silverButton"
         onClick={onClick}
-        className="w-64 h-20 px-4 rounded-2xl text-space-dark-blue font-HakgyoansimWoojuR tracking-wider text-3xl
-          hover:scale-110 hover:font-black transition ease-in-out delay-50 flex items-center justify-center"
+        className={`w-22 h-14 px-4 rounded-2xl text-white font-HakgyoansimWoojuR tracking-tighter text-bold text-4xl
+        hover:scale-110  transition ease-in-out delay-50 flex items-center justify-center`}
       >
-        {mode}
-      </button> */}
+        추천 시작
+      </button>
     </div>
   );
 };
@@ -122,4 +135,10 @@ const LongButton: React.FC<LongButtonProps> = ({
   );
 };
 
-export { Button, LongButton, PaginationButton, RoundButton };
+export {
+  Button,
+  LongButton,
+  PaginationButton,
+  RoundButton,
+  RecommendStartButton,
+};

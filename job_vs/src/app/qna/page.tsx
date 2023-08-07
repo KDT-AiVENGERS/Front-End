@@ -6,7 +6,7 @@ import { LongObjective, Objective } from "@/components/objective";
 import { ObjectiveTypes } from "@/interfaces/components";
 import { Skill } from "@/components/skill";
 import { Subjective } from "@/components/subjective";
-import { PaginationButton } from "@/components/button";
+import { PaginationButton, RecommendStartButton } from "@/components/button";
 
 export default function Home() {
   const [currentQuestion, setCurrentQuestion] = useState(0);
@@ -19,6 +19,28 @@ export default function Home() {
       console.log(newState);
       return newState;
     });
+  };
+
+  const discirminator = (question: Question) => {
+    if (question.questionIndex === answer.length - 1) {
+      return 2;
+    }
+
+    const answerLength = answer[question.questionIndex].length;
+    switch (question.type) {
+      case "multipleChoice":
+      case "multipleChoiceLong":
+        if (
+          question.choiceMoreThan <= answerLength &&
+          answerLength <= question.choiceLowerThan
+        ) {
+          return 1;
+        } else {
+          return 0;
+        }
+      default:
+        return 1;
+    }
   };
 
   const handlePagination = (currentQuestion: number, direction: number) => {
@@ -97,18 +119,31 @@ export default function Home() {
           <div>{renderQuestion(questions[currentQuestion])}</div>
           <div className="h-32"></div>
           <div className="w-2/3 flex justify-between">
-            <PaginationButton
-              mode="prev"
-              onClick={() => {
-                handlePagination(currentQuestion, -1);
-              }}
-            />
-            <PaginationButton
-              mode="next"
-              onClick={() => {
-                handlePagination(currentQuestion, 1);
-              }}
-            />
+            {currentQuestion === 0 ? (
+              <PaginationButton mode="prev" isGlow={false} onClick={() => {}} />
+            ) : (
+              <PaginationButton
+                mode="prev"
+                isGlow={true}
+                onClick={() => {
+                  handlePagination(currentQuestion, -1);
+                }}
+              />
+            )}
+
+            {discirminator(questions[currentQuestion]) === 1 ? (
+              <PaginationButton
+                mode="next"
+                isGlow={true}
+                onClick={() => {
+                  handlePagination(currentQuestion, 1);
+                }}
+              />
+            ) : discirminator(questions[currentQuestion]) === 2 ? (
+              <RecommendStartButton onClick={() => {}} />
+            ) : (
+              <PaginationButton mode="next" isGlow={false} onClick={() => {}} />
+            )}
           </div>
           <div className="h-64"></div>
         </main>

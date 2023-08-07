@@ -67,6 +67,9 @@ body {
 #pagination {
   animation: glow_silver_comp 2s ease-in-out infinite;
 }
+#pagination_nonglow {
+  opacity: 0.4;
+}
 
 #glowButton {
   filter: drop-shadow(0 0 2px #bdc3c7) drop-shadow(0 0 5px #bdc3c7);

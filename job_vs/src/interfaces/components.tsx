@@ -19,6 +19,7 @@ export interface LongButtonProps extends ButtonProps {
 export interface PaginationButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   mode: string;
+  isGlow: boolean;
   onClick: () => void;
 }
 

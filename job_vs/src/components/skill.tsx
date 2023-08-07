@@ -64,6 +64,7 @@ const Skill: React.FC<SkillProps> = ({
       );
     }
     if (
+      searchedSkillStack &&
       selectedSkillStack.some((registeredItem) =>
         _.isEqual(searchedSkillStack.value, registeredItem.value)
       )

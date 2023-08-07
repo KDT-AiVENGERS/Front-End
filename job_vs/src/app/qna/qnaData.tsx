@@ -1,3 +1,5 @@
+const INF = 100000;
+
 export interface QuestionOption {
   optionName: string;
   optionDescription?: string;
@@ -38,7 +40,7 @@ const questions: Question[] = [
     type: "multipleChoice",
     questionIndex: 0,
     choiceMoreThan: 3,
-    choiceLowerThan: 0,
+    choiceLowerThan: INF,
     question: "나를 잘 표현할 수 있는 것들을 세 가지 이상 골라주세요",
     options: [
       { optionName: "적극적" },
@@ -51,7 +53,7 @@ const questions: Question[] = [
   {
     type: "search",
     questionIndex: 1,
-    question: `보유 중인 기술 스택이 있다면 골라주세요.\n없으면 넘어가 주시면 됩니다`,
+    question: `보유 중인 기술 스택이 있다면 골라주세요\n없으면 넘어가 주시면 됩니다`,
   },
   {
     type: "multipleChoiceLong",
