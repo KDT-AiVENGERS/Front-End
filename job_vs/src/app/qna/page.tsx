@@ -173,6 +173,16 @@ export default function Home() {
   };
   return (
     <>
+      {isLoading && (
+        <div className="fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center z-50">
+          <div
+            id="silver"
+            className="text-white font-HakgyoansimWoojuR text-4xl animate-fade-in"
+          >
+            인공지능이 추천 공고를 찾고 있어요!
+          </div>
+        </div>
+      )}
       <div className="bg-main-background-color min-h-screen relative">
         <div className="absolute w-full h-screen">
           <div className="flex justify-center">

@@ -84,6 +84,7 @@ export default function Home() {
       `${MODEL_SERVER_PATH}/find_lectures/${jdID}?${lecRequestParams}`
     );
     // return;
+    setIsLoading(true);
     try {
       const resID = await fetch(
         `${MODEL_SERVER_PATH}/find_lectures/${jdID}?${lecRequestParams}`,
@@ -112,6 +113,16 @@ export default function Home() {
 
   return (
     <>
+      {isLoading && (
+        <div className="fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center z-50">
+          <div
+            id="silver"
+            className="text-white font-HakgyoansimWoojuR text-4xl animate-fade-in"
+          >
+            이 공고에 최적화된 강의를 찾고 있어요!
+          </div>
+        </div>
+      )}
       <div className="bg-main-background-color min-h-screen relative">
         <div className="absolute w-full h-screen">
           <div className="flex justify-center">

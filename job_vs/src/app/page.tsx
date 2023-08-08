@@ -18,6 +18,14 @@ export default function Home() {
   추천해드린 강의로 합격 확률을 높여보세요`,
   ];
 
+  const introComment: string = `
+  북극성은 하늘의 지표에요
+  밤하늘에서 빛나는 안내자
+  항상 같은 위치에서 빛나기 때문에
+  누구나 그 방향을 믿고 갈 수 있어요
+  어둡고 불확실한 취업여정에서
+  북극성이 길잡이가 되어드릴게요`;
+
   const router = useRouter();
   return (
     <>
@@ -53,7 +61,8 @@ export default function Home() {
             AI가 당신의 취업을 도와드릴게요
           </h2>
           <div className="h-64" />
-          <div className="h-64" />
+          <div className="h-32" />
+
           <div className="fixed top-3/5">
             <FadeButton
               onClick={() => {
@@ -69,6 +78,14 @@ export default function Home() {
             <Introduce />
           </div>
 
+          <div className="h-32"></div>
+          <div
+            id="silver"
+            className="font-OmyuPretty 
+        tracking-widest text-white text-3xl whitespace-pre-line text-center leading-[4rem]"
+          >
+            {introComment}
+          </div>
           <div className="h-64"></div>
 
           <Onboarding
