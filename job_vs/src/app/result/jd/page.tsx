@@ -1,3 +1,4 @@
+"use client";
 import Image from "next/image";
 import { dummyJD } from "@/app/dummyData";
 import { CurriCell } from "@/components/curriCell";
@@ -7,27 +8,59 @@ import {
   RecommendMetricsDatum,
 } from "@/interfaces/components";
 import { JDRecommendCell } from "@/components/jdRecommendCell";
-import { useRouter } from "next/router";
+import { useRecoilValue } from "recoil";
+import { JDDataState } from "@/global/globalAtom";
+import { JDResponse } from "@/interfaces/server";
 
 export default function Home() {
-  const router = useRouter();
-  const dataString = router.query.data;
+  const obtainedJDData: JDResponse = useRecoilValue(JDDataState);
+  const bestKeyword = obtainedJDData["data"]["most_frequent_job"];
 
-  if (typeof dataString === "string") {
-    const data = JSON.parse(decodeURIComponent(dataString));
-    console.log(data);
-  } else {
-    console.error("Data is not a string");
-  }
-  const recommendedArray: JDRecommendCellProps[] = new Array(6).fill(dummyJD);
+  const fromJDtoJDCell = (obtainedJDData: JDResponse) => {
+    let JDList: JDRecommendCellProps[] = [];
+    obtainedJDData.data.jds.map((item) => {
+      // 수정된 부분
+      let JD: JDRecommendCellProps = {
+        jdName: "",
+        yearOfExperience: 0,
+        job: "",
+        introduction: "",
+        qualificationRequirements: "",
+        welfare: "",
+        preferentialTreatment: "",
+        url: "",
+      };
+      JD.jdName = item["공고명"];
+      JD.yearOfExperience = item["경력조건"];
+      JD.job = item["직무내용"];
+      JD.introduction = item["회사소개"];
+      JD.qualificationRequirements = item["자격요건"];
+      JD.welfare = item["복지"];
+      JD.preferentialTreatment = item["우대조건"];
+      JD.url = item["출처 URL"];
+      JDList.push(JD);
+    });
+    return JDList;
+  };
 
-  const recommendMetrics: RecommendMetricsDatum[] = [
-    { key: "전공", value: 5 },
-    { key: "능력", value: 3 },
-    { key: "아무", value: 2 },
-    { key: "거나", value: 4 },
-    { key: "쓰자", value: 1 },
-  ];
+  const fromJDtoMetrics = (obtainedJDData: JDResponse) => {
+    const recommendMetrics: RecommendMetricsDatum[] = Object.entries(
+      obtainedJDData.data.keyword_counts
+    ).map(([key, value]) => {
+      let recommendMetricsDatum: RecommendMetricsDatum = {
+        key: key,
+        value: value,
+      };
+      return recommendMetricsDatum;
+    });
+    return recommendMetrics;
+  };
+
+  const recommendedArray: JDRecommendCellProps[] =
+    fromJDtoJDCell(obtainedJDData);
+  2;
+  const recommendMetrics: RecommendMetricsDatum[] =
+    fromJDtoMetrics(obtainedJDData);
   return (
     <>
       <div className="bg-main-background-color min-h-screen relative">
@@ -52,7 +85,7 @@ export default function Home() {
           </div>
           <JDRecommendSummary
             recommendMetrics={recommendMetrics}
-            bestKeyword="웹개발자"
+            bestKeyword={bestKeyword}
           />
           <div className="h-28" />
           <div

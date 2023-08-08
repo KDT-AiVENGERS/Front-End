@@ -1,20 +1,23 @@
 "use client";
 import Image from "next/image";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Question, QuestionOption, questions } from "./qnaData";
 import { LongObjective, Objective } from "@/components/objective";
 import { ObjectiveTypes } from "@/interfaces/components";
 import { Skill } from "@/components/skill";
 import { Subjective } from "@/components/subjective";
 import { PaginationButton, RecommendStartButton } from "@/components/button";
-import { MODEL_SERVER_PATH } from "@/global/globalData";
+import { MODEL_SERVER_PATH } from "@/global/globalConstant";
 import { useRouter } from "next/navigation";
+import { useRecoilState } from "recoil";
+import { JDDataState } from "@/global/globalAtom";
 
 export default function Home() {
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [answer, setAnswer] = useState<string[][]>([[], [], [], [], []]);
   const [countForAnimation, SetCountForAnimation] = useState(0);
   const [isLoading, setIsLoading] = useState(false);
+  const [JDData, setJDData] = useRecoilState(JDDataState);
 
   const handleStateChange = (liftedState: string[], questionIndex: number) => {
     setAnswer((prev) => {
@@ -47,6 +50,14 @@ export default function Home() {
         domain,
       },
     };
+    const columns = ["자격요건", "우대조건", "주요업무"];
+    const start = 0;
+    const end = 10;
+    const jdRequestParams = new URLSearchParams();
+
+    jdRequestParams.append("columns", JSON.stringify(columns));
+    jdRequestParams.append("start", start.toString());
+    jdRequestParams.append("end", end.toString());
 
     try {
       const resID = await fetch(`${MODEL_SERVER_PATH}/v_jds`, {
@@ -63,8 +74,10 @@ export default function Home() {
 
       const obtainedIdData = await resID.json();
 
+      console.log(jdRequestParams);
+
       const resJD = await fetch(
-        `${MODEL_SERVER_PATH}/v_jds/${obtainedIdData["id"]}`,
+        `${MODEL_SERVER_PATH}/find_jds/${obtainedIdData["id"]}?${jdRequestParams}`,
         {
           method: "GET",
           headers: {
@@ -80,9 +93,14 @@ export default function Home() {
       const obtainedJDData = await resJD.json();
 
       setIsLoading(false);
+      console.log(obtainedJDData);
+      console.log(obtainedIdData);
+      setJDData(obtainedJDData);
+      console.log("🔥");
+      console.log(obtainedIdData);
+      setIsLoading(false);
 
-      const queryString = encodeURIComponent(JSON.stringify(obtainedJDData));
-      router.push(`/result/jd?data=${queryString}`);
+      router.push(`/result/jd`);
     } catch (e) {
       console.error("An error occurred while fetching data: ", e);
       setIsLoading(false);
