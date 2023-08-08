@@ -7,11 +7,15 @@ import { ObjectiveTypes } from "@/interfaces/components";
 import { Skill } from "@/components/skill";
 import { Subjective } from "@/components/subjective";
 import { PaginationButton, RecommendStartButton } from "@/components/button";
+import { MODEL_SERVER_PATH } from "@/global/globalData";
+import { useRouter } from "next/navigation";
 
 export default function Home() {
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [answer, setAnswer] = useState<string[][]>([[], [], [], [], []]);
   const [countForAnimation, SetCountForAnimation] = useState(0);
+  const [isLoading, setIsLoading] = useState(false);
+
   const handleStateChange = (liftedState: string[], questionIndex: number) => {
     setAnswer((prev) => {
       const newState = [...prev];
@@ -19,6 +23,70 @@ export default function Home() {
       console.log(newState);
       return newState;
     });
+  };
+
+  const router = useRouter();
+
+  const requsetJDButtonClick = async (answer: string[][]) => {
+    setIsLoading(true);
+    const date: string = new Date().toISOString();
+    const name: string = "이의진";
+    const personality = answer[0];
+    const stack = answer[1];
+    const welfare = answer[2];
+    const job = answer[3];
+    const domain = answer[4];
+    const data = {
+      date,
+      name,
+      answers: {
+        personality,
+        stack,
+        welfare,
+        job,
+        domain,
+      },
+    };
+
+    try {
+      const resID = await fetch(`${MODEL_SERVER_PATH}/v_jds`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
+
+      if (!resID.ok) {
+        throw new Error(`HTTP error! status: ${resID.status}`);
+      }
+
+      const obtainedIdData = await resID.json();
+
+      const resJD = await fetch(
+        `${MODEL_SERVER_PATH}/v_jds/${obtainedIdData["id"]}`,
+        {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+
+      if (!resJD.ok) {
+        throw new Error(`HTTP error! status: ${resJD.status}`);
+      }
+
+      const obtainedJDData = await resJD.json();
+
+      setIsLoading(false);
+
+      const queryString = encodeURIComponent(JSON.stringify(obtainedJDData));
+      router.push(`/result/jd?data=${queryString}`);
+    } catch (e) {
+      console.error("An error occurred while fetching data: ", e);
+      setIsLoading(false);
+    }
   };
 
   const discirminator = (question: Question) => {
@@ -140,7 +208,11 @@ export default function Home() {
                 }}
               />
             ) : discirminator(questions[currentQuestion]) === 2 ? (
-              <RecommendStartButton onClick={() => {}} />
+              <RecommendStartButton
+                onClick={() => {
+                  requsetJDButtonClick(answer);
+                }}
+              />
             ) : (
               <PaginationButton mode="next" isGlow={false} onClick={() => {}} />
             )}

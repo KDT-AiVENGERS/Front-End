@@ -7,8 +7,18 @@ import {
   RecommendMetricsDatum,
 } from "@/interfaces/components";
 import { JDRecommendCell } from "@/components/jdRecommendCell";
+import { useRouter } from "next/router";
 
 export default function Home() {
+  const router = useRouter();
+  const dataString = router.query.data;
+
+  if (typeof dataString === "string") {
+    const data = JSON.parse(decodeURIComponent(dataString));
+    console.log(data);
+  } else {
+    console.error("Data is not a string");
+  }
   const recommendedArray: JDRecommendCellProps[] = new Array(6).fill(dummyJD);
 
   const recommendMetrics: RecommendMetricsDatum[] = [
