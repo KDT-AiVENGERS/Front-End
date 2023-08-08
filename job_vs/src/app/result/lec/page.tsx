@@ -1,11 +1,66 @@
+"use client";
 import Image from "next/image";
 import { dummyCurri } from "@/app/dummyData";
 import { CurriCell } from "@/components/curriCell";
 import { CurriCellProps } from "@/interfaces/components";
 import { useState, useEffect } from "react";
+import { LecResponse } from "@/interfaces/server";
+import { useRecoilValue } from "recoil";
+import { LecDataState } from "@/global/globalAtom";
 
 export default function Home() {
-  const recommendedArray: CurriCellProps[] = new Array(6).fill(dummyCurri);
+  const obtainedLecData: LecResponse = useRecoilValue(LecDataState);
+  console.log(obtainedLecData);
+
+  const fromObtainedToCellData = (obtainedLecData: LecResponse) => {
+    let lecList: CurriCellProps[] = [];
+    Object.entries(obtainedLecData.data).map(([idx, data]) => {
+      let lec: CurriCellProps = {
+        largeCategory: "",
+        smallCategory: "",
+        title: "",
+        difficulty: "",
+        requiredTime: "",
+        introduction: "",
+        language: "",
+        url: "",
+      };
+      Object.entries(data).map(([key, value]) => {
+        switch (key) {
+          case "대분류":
+            lec.largeCategory = typeof value === "string" ? value : "";
+            break;
+          case "소분류":
+            lec.smallCategory = typeof value === "string" ? value : "";
+            break;
+          case "강의명":
+            lec.title = typeof value === "string" ? value : "";
+            break;
+          case "난이도":
+            lec.difficulty = typeof value === "string" ? value : "";
+            break;
+          case "총소요시간":
+            lec.requiredTime = typeof value === "string" ? value : "";
+            break;
+          case "강의소개":
+            lec.introduction = typeof value === "string" ? value : "";
+            break;
+          case "언어":
+            lec.language = typeof value === "string" ? value : "";
+            break;
+          case "출처":
+            lec.url = typeof value === "string" ? value : "";
+            break;
+          default:
+            break;
+        }
+      });
+      lecList.push(lec);
+    });
+    return lecList;
+  };
+  const recommendedArray: CurriCellProps[] =
+    fromObtainedToCellData(obtainedLecData);
 
   return (
     <>

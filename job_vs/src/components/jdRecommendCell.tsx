@@ -5,6 +5,8 @@ import React, { useState } from "react";
 import Linkify from "react-linkify";
 
 const JDRecommendCell: React.FC<JDRecommendCellProps> = ({
+  jdId,
+  companyName,
   jdName,
   job,
   yearOfExperience,
@@ -13,6 +15,7 @@ const JDRecommendCell: React.FC<JDRecommendCellProps> = ({
   welfare,
   preferentialTreatment,
   url,
+  onClick,
 }) => {
   var YearOfExperienceOutput: React.FC;
   if (yearOfExperience === 0) {
@@ -87,11 +90,24 @@ const JDRecommendCell: React.FC<JDRecommendCellProps> = ({
               font-HakgyoansimWoojuR font-bold tracking-tight leading-10
               text-space-yellow pe-1 py-1 rounded-full"
             >
-              {job}
+              {companyName}
             </div>
             <span
               className="font-HakgyoansimWoojuR text-xl py-1
               font-bold tracking-tight leading-10 text-gray-400 items-center"
+            >
+              |
+            </span>
+            <div
+              className="text-xl ms-2
+          font-HakgyoansimWoojuR font-bold tracking-tight leading-10
+          text-space-yellow pe-1 py-1 rounded-full"
+            >
+              {job}
+            </div>
+            <span
+              className="font-HakgyoansimWoojuR text-xl py-1
+          font-bold tracking-tight leading-10 text-gray-400 items-center"
             >
               |
             </span>
@@ -116,6 +132,19 @@ const JDRecommendCell: React.FC<JDRecommendCellProps> = ({
             <div className="flex">
               <div
                 className="text-xl ms-4
+          font-HakgyoansimWoojuR font-bold tracking-tight leading-10
+          text-space-yellow pe-1 py-1 rounded-full"
+              >
+                {companyName}
+              </div>
+              <span
+                className="font-HakgyoansimWoojuR text-xl py-1
+          font-bold tracking-tight leading-10 text-gray-400 items-center"
+              >
+                |
+              </span>
+              <div
+                className="text-xl ms-2
           font-HakgyoansimWoojuR font-bold tracking-tight leading-10
           text-space-yellow pe-1 py-1 rounded-full"
               >
@@ -171,7 +200,7 @@ const JDRecommendCell: React.FC<JDRecommendCellProps> = ({
               id="silverButton"
               className="w-80 text-space-dark-yellow"
               newButtonColorClassName="bg-space-dark-blue"
-              onClick={() => {}}
+              onClick={onClick}
             >
               강의 추천받기
             </Button>

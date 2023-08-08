@@ -9,18 +9,26 @@ import {
 } from "@/interfaces/components";
 import { JDRecommendCell } from "@/components/jdRecommendCell";
 import { useRecoilValue } from "recoil";
-import { JDDataState } from "@/global/globalAtom";
+import { JDDataState, LecDataState } from "@/global/globalAtom";
 import { JDResponse } from "@/interfaces/server";
+import { useRouter } from "next/navigation";
+import { useState } from "react";
+import { MODEL_SERVER_PATH } from "@/global/globalConstant";
+import { useRecoilState } from "recoil";
 
 export default function Home() {
   const obtainedJDData: JDResponse = useRecoilValue(JDDataState);
   const bestKeyword = obtainedJDData["data"]["most_frequent_job"];
+  const [isLoading, setIsLoading] = useState(false);
+  const [lecData, setLecData] = useRecoilState(LecDataState);
 
   const fromJDtoJDCell = (obtainedJDData: JDResponse) => {
     let JDList: JDRecommendCellProps[] = [];
     obtainedJDData.data.jds.map((item) => {
       // 수정된 부분
       let JD: JDRecommendCellProps = {
+        jdId: 0,
+        companyName: "",
         jdName: "",
         yearOfExperience: 0,
         job: "",
@@ -29,7 +37,10 @@ export default function Home() {
         welfare: "",
         preferentialTreatment: "",
         url: "",
+        onClick: () => {},
       };
+      JD.companyName = item["회사명"];
+      JD.jdId = item["jd_id"];
       JD.jdName = item["공고명"];
       JD.yearOfExperience = item["경력조건"];
       JD.job = item["직무내용"];
@@ -58,9 +69,47 @@ export default function Home() {
 
   const recommendedArray: JDRecommendCellProps[] =
     fromJDtoJDCell(obtainedJDData);
-  2;
+
   const recommendMetrics: RecommendMetricsDatum[] =
     fromJDtoMetrics(obtainedJDData);
+
+  const router = useRouter();
+
+  const requestLectureButtonClick = async (jdID: number) => {
+    const lecRequestParams = new URLSearchParams();
+
+    lecRequestParams.append("start", "0");
+    lecRequestParams.append("end", "10");
+    console.log(
+      `${MODEL_SERVER_PATH}/find_lectures/${jdID}?${lecRequestParams}`
+    );
+    // return;
+    try {
+      const resID = await fetch(
+        `${MODEL_SERVER_PATH}/find_lectures/${jdID}?${lecRequestParams}`,
+        {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+
+      if (!resID.ok) {
+        throw new Error(`HTTP error! status: ${resID.status}`);
+      }
+
+      const obtainedData = await resID.json();
+
+      setIsLoading(false);
+      setLecData(obtainedData);
+      router.push(`/result/lec`);
+    } catch (e) {
+      console.error("An error occurred while fetching data: ", e);
+      setIsLoading(false);
+    }
+  };
+
   return (
     <>
       <div className="bg-main-background-color min-h-screen relative">
@@ -100,6 +149,8 @@ export default function Home() {
           <div className="animate-make-cell w-full flex flex-col gap-8 items-center">
             {recommendedArray.map((value) => (
               <JDRecommendCell
+                jdId={value.jdId}
+                companyName={value.companyName}
                 jdName={value.jdName}
                 job={value.job}
                 yearOfExperience={value.yearOfExperience}
@@ -108,6 +159,9 @@ export default function Home() {
                 preferentialTreatment={value.preferentialTreatment}
                 welfare={value.welfare}
                 url={value.url}
+                onClick={() => {
+                  requestLectureButtonClick(value.jdId);
+                }}
               />
             ))}
           </div>

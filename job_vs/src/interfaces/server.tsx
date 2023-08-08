@@ -18,3 +18,19 @@ export interface JDResponse {
   };
   message: string;
 }
+
+export interface LecResponse {
+  message: string;
+  data: {
+    "Unnamed: 0": number;
+    대분류: string;
+    소분류: string;
+    강의명: string;
+    난이도: string;
+    "가격(현재가격)": number;
+    총소요시간: string;
+    강의소개: string;
+    언어: string;
+    출처: string;
+  };
+}

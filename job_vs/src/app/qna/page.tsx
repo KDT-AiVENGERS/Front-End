@@ -93,12 +93,7 @@ export default function Home() {
       const obtainedJDData = await resJD.json();
 
       setIsLoading(false);
-      console.log(obtainedJDData);
-      console.log(obtainedIdData);
       setJDData(obtainedJDData);
-      console.log("🔥");
-      console.log(obtainedIdData);
-      setIsLoading(false);
 
       router.push(`/result/jd`);
     } catch (e) {

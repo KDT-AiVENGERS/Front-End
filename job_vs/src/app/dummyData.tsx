@@ -1,10 +1,12 @@
 import { JDRecommendCellProps, CurriCellProps } from "@/interfaces/components";
 
 const dummyJD: JDRecommendCellProps = {
-  jdName: "네이버 클로바",
+  jdId: 30,
+  companyName: "네이버 클로바",
+  jdName: "네이버 클로바 모집",
   job: "인공지능개발자",
   yearOfExperience: 1,
-  introduction: `Mission
+  introduction: `Missio집
     ‘We build technology that makes everyday offline better’
     
     ‘현실의 삶을 개선하는 기술을 만듭니다.’ 미소의 미션입니다. 우리는 미소를 사용하는 사람들의 실제 오프라인에서의 삶이 더 나아지길 바랍니다.
@@ -61,6 +63,7 @@ const dummyJD: JDRecommendCellProps = {
   - Python, GO, Ruby 중 하나 이상의 언어를 사용한 경험이 있는 분
   - IT 스타트업 개발 경력 3년 이상인 분`,
   url: `https://www.jobplanet.co.kr/job/search?posting_ids%5B%5D=1245773`,
+  onClick: () => {},
 };
 
 const dummyCurri: CurriCellProps = {

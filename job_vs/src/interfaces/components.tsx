@@ -80,6 +80,8 @@ export interface JDRecommendSummaryProps {
 }
 
 export interface JDRecommendCellProps {
+  jdId: number;
+  companyName: string;
   jdName: string;
   job: string;
   yearOfExperience: number;
@@ -88,6 +90,7 @@ export interface JDRecommendCellProps {
   welfare: string;
   preferentialTreatment: string;
   url: string;
+  onClick: () => void;
 }
 
 export interface CurriCellProps {
