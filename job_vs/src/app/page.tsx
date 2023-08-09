@@ -40,7 +40,7 @@ export default function Home() {
             <img
               src="/images/onboarding/mainPageUpscaled.png"
               alt="background-image"
-              className="h-1/2 absolute z-10 object-cover"
+              className="h-1/2 absolute z-10 object-cover animate-fade-in"
             ></img>
           </div>
         </div>
@@ -61,7 +61,7 @@ export default function Home() {
             AI가 당신의 취업을 도와드릴게요
           </h2>
           <div className="h-64" />
-          <div className="h-32" />
+          <div className="h-64" />
 
           <div className="fixed top-3/5">
             <FadeButton

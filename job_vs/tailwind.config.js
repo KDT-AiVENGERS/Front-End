@@ -11,6 +11,7 @@ module.exports = {
         "make-cell": "make-cell 0.4s linear",
         "fade-in": "fade-in 0.4s linear",
         "fade-in-delay": "fade-in-delay 0.2s linear",
+        "fade-in-full": "fade-in-full 0.2s linear",
       },
       keyframes: {
         "make-cell": {
@@ -25,6 +26,11 @@ module.exports = {
           "0%": { opacity: 0 },
           "50%": { opacity: 0 },
           "100%": { opacity: 0.3 },
+        },
+        "fade-in-full": {
+          "0%": { opacity: 0 },
+          "50%": { opacity: 0.5 },
+          "100%": { opacity: 1 },
         },
       },
       height: {

@@ -1,16 +1,16 @@
-"use client";
 import "./globals.css";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import dynamic from "next/dynamic";
-import { RecoilRoot } from "recoil";
+import Recoil from "@/components/recoil";
 
 const inter = Inter({ subsets: ["latin"] });
 
-// export const metadata: Metadata = {
-//   title: "Polar-Star: 여러분의 진로를 함께해요",
-//   description: "여러분들의 진로를 함께해요",
-// };
+export const metadata: Metadata = {
+  title: "Polar-Star: 여러분의 진로를 함께해요",
+  description: "여러분들의 진로를 함께해요",
+  icons: "/images/favicon.ico",
+};
 
 export default function RootLayout({
   children,
@@ -19,9 +19,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <RecoilRoot>
+      <Recoil>
         <body className={inter.className}>{children}</body>
-      </RecoilRoot>
+      </Recoil>
     </html>
   );
 }

@@ -115,11 +115,21 @@ export default function Home() {
     <>
       {isLoading && (
         <div className="fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center z-50">
-          <div
-            id="silver"
-            className="text-white font-HakgyoansimWoojuR text-4xl animate-fade-in"
-          >
-            이 공고에 최적화된 강의를 찾고 있어요!
+          <div className="flex flex-col w-full items-center">
+            <img
+              id="glow_comp"
+              src="/images/loading/north.png"
+              alt="loading-image"
+              className="h-32 w-32 animate-fade-in-full
+            "
+            ></img>
+            <div className="h-32"></div>
+            <div
+              id="silver"
+              className="text-white font-HakgyoansimWoojuR text-4xl animate-fade-in"
+            >
+              이 공고에 최적화된 강의를 찾고 있어요!
+            </div>
           </div>
         </div>
       )}

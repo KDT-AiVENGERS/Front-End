@@ -64,6 +64,9 @@ body {
   animation: glow_silver_weak 2s ease-in-out infinite;
 }
 
+#glow_comp {
+  animation: fade_in 0.5s linear, glow_silver_comp_weak 2s ease-in-out infinite;
+}
 #pagination {
   animation: glow_silver_comp 2s ease-in-out infinite;
 }
