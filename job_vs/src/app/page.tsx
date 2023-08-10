@@ -6,6 +6,7 @@ import { Onboarding } from "@/components/onboarding";
 import { Introduce } from "@/components/introduce";
 import Head from "next/head";
 import { useRouter } from "next/navigation";
+import { OpacityAnimation } from "@/components/opacityAni";
 
 export default function Home() {
   const description: string[] = [
@@ -44,6 +45,7 @@ export default function Home() {
             ></img>
           </div>
         </div>
+
         <main className="relative z-20 flex min-h-screen flex-col gap-4 items-center">
           <div className="h-32" />
           <h1
@@ -61,7 +63,16 @@ export default function Home() {
             AI가 당신의 취업을 도와드릴게요
           </h2>
           <div className="h-64" />
-          <div className="h-64" />
+          <div className="h-16" />
+          <OpacityAnimation>
+            <img
+              id="glow_comp"
+              src="/images/onboarding/north.png"
+              alt="polar-star-image"
+              className="h-32 w-32 animate-fade-in-full
+            "
+            ></img>
+          </OpacityAnimation>
 
           <div className="fixed top-3/5">
             <FadeButton
@@ -73,7 +84,7 @@ export default function Home() {
             </FadeButton>
           </div>
 
-          <div className="h-32"></div>
+          <div className="h-8"></div>
           <div className="fixed top-4/5">
             <Introduce />
           </div>

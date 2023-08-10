@@ -26,7 +26,7 @@ const JDRecommendSummary: React.FC<JDRecommendSummaryProps> = ({
       keys={["value"]}
       enableLabel={false}
       indexBy="key"
-      margin={{ top: 50, right: 20, bottom: 100, left: 60 }}
+      margin={{ top: 50, right: 20, bottom: 70, left: 60 }}
       padding={0.3}
       valueScale={{ type: "linear" }}
       indexScale={{ type: "band", round: true }}
@@ -52,7 +52,7 @@ const JDRecommendSummary: React.FC<JDRecommendSummaryProps> = ({
       axisRight={null}
       axisBottom={{
         tickSize: 5,
-        tickPadding: 0,
+        tickPadding: 10,
         tickRotation: 30,
         legend: "",
         legendPosition: "middle",

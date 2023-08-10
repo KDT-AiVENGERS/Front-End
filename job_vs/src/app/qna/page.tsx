@@ -50,7 +50,7 @@ export default function Home() {
         domain,
       },
     };
-    const columns = ["자격요건", "우대조건", "주요업무"];
+    const columns = ["자격요건", "우대조건", "주요업무", "복지", "회사소개"];
     const start = 0;
     const end = 10;
     const jdRequestParams = new URLSearchParams();
