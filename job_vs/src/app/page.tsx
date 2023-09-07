@@ -89,14 +89,16 @@ export default function Home() {
             <Introduce />
           </div>
 
-          <div className="h-32"></div>
-          <div
-            id="silver"
-            className="font-OmyuPretty 
+          <OpacityAnimation>
+            <div className="h-32"></div>
+            <div
+              id="silver"
+              className="font-OmyuPretty 
         tracking-widest text-white text-3xl whitespace-pre-line text-center leading-[4rem]"
-          >
-            {introComment}
-          </div>
+            >
+              {introComment}
+            </div>
+          </OpacityAnimation>
           <div className="h-64"></div>
 
           <Onboarding
