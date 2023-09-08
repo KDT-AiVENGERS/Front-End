@@ -4,11 +4,10 @@
 
 ## ❗️ About PolarStar FrontEnd Repository
 
-### FrontEnd Repository는 북극성 프로젝트의 Web FrontEnd를 구축하기 위해
+### ✨ FrontEnd Repository는 북극성 프로젝트의 Web FrontEnd를 구축하기 위해 만들어진 Repository 입니다. ✨
 
-### 만들어진 Repository 입니다.
+![Front-End image](https://github.com/KDT-AiVENGERS/PolarStar_FrontEnd/assets/60493070/40634104-33bf-4665-82e5-a5daafbc323b)
 
-## 🖇️ Wire Frame
 
 ## ⭐️ Key Service & User Flow
 
